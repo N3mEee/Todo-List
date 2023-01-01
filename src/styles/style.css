@@ -6,7 +6,128 @@ body {
 #content {
     width: 100vw;
     min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+}
+
+.sidebar {
+    width: 100%;
+    height: 100%;
+    background-color: whitesmoke;
+    display: grid;
+    grid-template-rows: auto auto 1fr auto;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo p {
+    font-size: 24px;
+    font-weight: 900;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.lists {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.lists hr {
+    width: 100%;
+}
+
+.list {
+    cursor: pointer;
+    padding: 2px;
+}
+
+.list:hover {
+    background-color: rgb(231, 231, 231);
+}
+
+.new-list {
+    display: flex;
+    padding: 20px;
+    gap: 10px;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: lightcyan;
+    cursor: pointer;
+}
+
+.new-list:hover {
+    background-color: lightblue;
+}
+
+.new-list .new-list-button {
+    font-weight: 600;
+}
+
+.main {
+    position: relative;
+    margin-left: 40px;
+    width: calc(100% - 40px);
+    height: 100%;
+    display: grid;
+    grid-template-rows: auto auto 1fr;
+}
+
+.main .input-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background-color: whitesmoke;
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.main .title {
+    font-size: 48px;
+    font-weight: 900;
+    padding-bottom: 20px;
+}
+
+.main .new-task {
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 50px;
+    padding: 10px;
+    margin: 20px 20px 0 0;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    background-color: whitesmoke;
+    justify-self: end;
+}
+
+.main .new-task:hover {
+    background-color: lightblue;
+}
+
+.main .new-task img {
+    width: 20px;
+    height: 20px;
+}
+.main .container {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: repeat(auto-fill, 20px);
+}
+
+.main .container .task {
+    display: flex;
+    gap: 10px;
 }
