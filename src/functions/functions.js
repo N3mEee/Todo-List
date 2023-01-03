@@ -1,5 +1,5 @@
 import NewList from "./newList";
-import NewTask from "./newTask.js";
+import NewTask from "./newTask";
 
 export function updateLists(listsArray) {
     const lists = document.querySelector(".lists");

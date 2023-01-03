@@ -36,7 +36,10 @@ export default function updateMain(listName, listArray) {
             });
         } else if (listName === "My Day") {
             element.task.forEach((item) => {
-                if (isToday(new Date(item.date))) {
+                const dateArray = item.date.split("-");
+                const newDate = `${dateArray[2]}, ${dateArray[1]}, ${dateArray[0]}`;
+
+                if (isToday(new Date(newDate))) {
                     const task = document.createElement("div");
                     task.classList.add("task");
                     container.appendChild(task);
