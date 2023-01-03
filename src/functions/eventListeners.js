@@ -1,7 +1,7 @@
 import NewList from "./newList";
 import NewTask from "./newTask";
-import { updateLists, updateLocalStorage } from "./functions.js";
-import updateMain from "./updateMain";
+import { updateLists, updateLocalStorage } from "./functions";
+import updateMain from "./updateTasksDOM";
 
 export default function events() {
     const sidebar = document.querySelector(".sidebar");
@@ -36,6 +36,7 @@ export default function events() {
     }
 
     function newTask(listsArray) {
+        //TODO: Move this into a separate file
         newTaskBtn.addEventListener("click", function (e) {
             e.stopImmediatePropagation();
 
@@ -91,42 +92,17 @@ export default function events() {
     }
 
     function checkBox(listsArray) {
-        tasks.forEach((element) => {
-            element.addEventListener("click", function (e) {
-                e.stopImmediatePropagation();
-                listsArray.forEach((element) => {
-                    element.task.forEach((task) => {
-                        if (
-                            task.titleValue === e.target.textContent ||
-                            task.titleValue === e.target.parentNode.children[1].textContent
-                        ) {
-                            if (e.target.parentNode.children[0].checked === true) {
-                                e.target.parentNode.children[0].checked = false;
-                            } else {
-                                e.target.parentNode.children[0].checked = true;
-                            }
-
-                            if (task.checkedStatus === true) {
-                                task.setChecked = false;
-                            } else {
+        tasks.forEach((taskItem) => {
+            taskItem.children[0].addEventListener("change", (e) => {
+                listsArray.forEach((list) => {
+                    list.task.forEach((task) => {
+                        if (e.target.parentNode.children[1].textContent === task.titleValue) {
+                            if (e.target.checked) {
                                 task.setChecked = true;
+                            } else {
+                                task.setChecked = false;
                             }
                             updateLocalStorage(listsArray);
-                        } else if (e.target.childElementCount > 0) {
-                            if (task.titleValue === e.target.children[1].textContent) {
-                                if (e.target.children[0].checked === true) {
-                                    e.target.children[0].checked = false;
-                                } else {
-                                    e.target.children[0].checked = true;
-                                }
-
-                                if (task.checkedStatus === true) {
-                                    task.setChecked = false;
-                                } else {
-                                    task.setChecked = true;
-                                }
-                                updateLocalStorage(listsArray);
-                            }
                         }
                     });
                 });
