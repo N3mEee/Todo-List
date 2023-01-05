@@ -72,7 +72,6 @@ body {
 }
 
 .main {
-    position: relative;
     margin-left: 40px;
     width: calc(100% - 40px);
     height: 100%;
@@ -80,15 +79,35 @@ body {
     grid-template-rows: auto auto 1fr;
 }
 
-.main .input-container {
+.main .new-task-form {
+    padding: 20px;
     position: absolute;
-    top: 50%;
-    left: 50%;
-    background-color: whitesmoke;
-    width: auto;
-    height: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    background-color: lightcoral;
+    width: max-content;
+    height: max-content;
     display: flex;
     flex-direction: column;
+}
+
+.main .new-task-form input {
+    margin: 10px 0;
+}
+
+.main .new-task-form .btn-primary {
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 10px;
+    padding: 10px;
+    background-color: lightblue;
+}
+
+.main .new-task-form .btn-primary:hover {
+    background-color: rgb(144, 204, 224);
 }
 
 .main .title {

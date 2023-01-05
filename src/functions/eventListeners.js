@@ -1,16 +1,14 @@
 import NewList from "./newList";
 import NewTask from "./newTask";
 import { updateLists, updateLocalStorage } from "./functions";
-import updateMain from "./updateTasksDOM";
+import updateMain from "../dom/updateTasksDOM";
+import taskInputForm from "../dom/taskInputForm";
 
 export default function events() {
-    const sidebar = document.querySelector(".sidebar");
-    const newListBtn = document.querySelector(".new-list");
-    const lists = document.querySelector(".lists");
-    const newTaskBtn = document.querySelector(".new-task");
-    const tasks = document.querySelectorAll(".task");
-
     function newList(listsArray) {
+        const newListBtn = document.querySelector(".new-list");
+        const lists = document.querySelector(".lists");
+
         newListBtn.addEventListener("click", () => {
             let listName = prompt("Please enter a list name");
             if (listName.length < 3) {
@@ -24,6 +22,8 @@ export default function events() {
         });
     }
     function sidebarLists(listsArray) {
+        const sidebar = document.querySelector(".sidebar");
+
         sidebar.addEventListener("click", function (e) {
             e.stopImmediatePropagation();
 
@@ -36,62 +36,50 @@ export default function events() {
     }
 
     function newTask(listsArray) {
-        //TODO: Move this into a separate file
+        const newTaskBtn = document.querySelector(".new-task");
+
         newTaskBtn.addEventListener("click", function (e) {
             e.stopImmediatePropagation();
+            taskInputForm(listsArray);
+            createNewTask(listsArray);
+        });
+    }
 
-            const main = document.querySelector(".main");
-            const inputContainer = document.createElement("div");
-            inputContainer.classList.add("input-container");
-            main.appendChild(inputContainer);
+    function createNewTask(listsArray) {
+        const main = document.querySelector(".main");
+        const form = document.querySelector(".new-task-form");
+        const taskName = form.children[3];
+        const description = form.children[5];
+        const date = form.children[7];
+        const listName = form.children[9];
+        const priority = form.children[11];
 
-            const taskName = document.createElement("input");
-            taskName.type = "text";
-
-            const date = document.createElement("input");
-            date.type = "date";
-
-            const listName = document.createElement("input");
-            listName.setAttribute("list", "list");
-
-            const datalist = document.createElement("datalist");
-            datalist.setAttribute("id", "list");
-            inputContainer.appendChild(datalist);
-
-            listsArray.forEach(function (element) {
-                const option = document.createElement("option");
-                option.value = element.listName;
-                datalist.appendChild(option);
-            });
-
-            const button = document.createElement("div");
-            button.textContent = "Add Task";
-            button.classList.add("btn-primary");
-
-            inputContainer.appendChild(taskName);
-            inputContainer.appendChild(date);
-            inputContainer.appendChild(listName);
-            inputContainer.appendChild(button);
-
-            button.addEventListener("click", (e) => {
-                e.stopImmediatePropagation();
-                if (taskName.value.length < 3 || listName.value < 3) {
-                    return;
-                } else {
-                    listsArray.forEach((element) => {
-                        if (element.listName === listName.value) {
-                            element.newTask = new NewTask(taskName.value, false, date.value);
-                        }
-                    });
-                    main.removeChild(inputContainer);
-                    updateLocalStorage(listsArray);
-                    updateMain(listName.value, listsArray);
-                }
-            });
+        form.lastChild.addEventListener("click", (e) => {
+            e.stopImmediatePropagation();
+            if (taskName.value.length < 3 || listName.value < 3) {
+                return;
+            } else {
+                listsArray.forEach((element) => {
+                    if (element.listName === listName.value) {
+                        element.newTask = new NewTask(
+                            taskName.value,
+                            false,
+                            date.value,
+                            description.value,
+                            priority.value
+                        );
+                    }
+                });
+                main.removeChild(form);
+                updateLocalStorage(listsArray);
+                updateMain(listName.value, listsArray);
+            }
         });
     }
 
     function checkBox(listsArray) {
+        const tasks = document.querySelectorAll(".task");
+
         tasks.forEach((taskItem) => {
             taskItem.children[0].addEventListener("change", (e) => {
                 listsArray.forEach((list) => {

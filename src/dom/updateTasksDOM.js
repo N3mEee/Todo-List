@@ -1,4 +1,4 @@
-import events from "./eventListeners";
+import events from "../functions/eventListeners";
 import { isToday } from "date-fns";
 export default function updateMain(listName, listArray) {
     const title = document.querySelector(".title");

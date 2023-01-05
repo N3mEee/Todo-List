@@ -1,10 +1,12 @@
 import { format } from "date-fns";
 
 export default class NewTask {
-    constructor(title, checked, date) {
+    constructor(title, checked, date, description, priority) {
         this.title = title;
         this.checked = checked;
         this.date = format(new Date(date), "dd-MM-yyyy");
+        this.description = description;
+        this.priority = priority;
     }
 
     get titleValue() {

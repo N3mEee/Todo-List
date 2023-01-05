@@ -27,7 +27,13 @@ export function getLocalStorage(listsArray) {
             x[i].task.forEach((element) => {
                 const dateArray = element.date.split("-");
                 const date = `${dateArray[2]}, ${dateArray[1]}, ${dateArray[0]}`;
-                listsArray[i].newTask = new NewTask(element.title, element.checked, date);
+                listsArray[i].newTask = new NewTask(
+                    element.title,
+                    element.checked,
+                    date,
+                    element.description,
+                    element.priority
+                );
             });
         }
     }

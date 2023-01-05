@@ -1,8 +1,8 @@
-import Content from "./functions/tasksDOM";
+import Content from "./dom/tasksDOM";
 import events from "./functions/eventListeners";
-import Sidebar from "./functions/sidebar";
+import Sidebar from "./dom/sidebar";
 import { updateLists, getLocalStorage } from "./functions/functions";
-import updateMain from "./functions/updateTasksDOM.js";
+import updateMain from "./dom/updateTasksDOM.js";
 import "./styles/style.css";
 
 let listsArray = [];
