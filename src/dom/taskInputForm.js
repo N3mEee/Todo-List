@@ -69,6 +69,7 @@ export default function taskInputForm(listsArray) {
     const button = document.createElement("div");
     button.textContent = "Add Task";
     button.classList.add("btn-primary");
+    button.classList.add("btn-new-task");
 
     form.appendChild(datalist);
     form.appendChild(priorityList);

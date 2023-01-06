@@ -98,7 +98,7 @@ body {
     margin: 10px 0;
 }
 
-.main .new-task-form .btn-primary {
+.btn-primary {
     border-radius: 10px;
     cursor: pointer;
     margin: 10px;
@@ -106,7 +106,7 @@ body {
     background-color: lightblue;
 }
 
-.main .new-task-form .btn-primary:hover {
+.btn-primary:hover {
     background-color: rgb(144, 204, 224);
 }
 
@@ -154,4 +154,23 @@ body {
 }
 .main .container .task .input {
     justify-self: center;
+}
+
+.main .new-list-form {
+    padding: 20px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    background-color: lightcoral;
+    width: max-content;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+}
+
+.main .new-list-form input {
+    margin: 10px 0;
 }

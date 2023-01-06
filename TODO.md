@@ -3,13 +3,21 @@
 -   The user should be able to delete a task
 -   The user should be able to delete a list with all the tasks in it
 -   The user should be able to expand a single todo to see/edit its details
+-   Split all the task DOM and logic from updateTasksDOM.JS
+
+## Bugs:
+
+-   The user can create multiple lists with the same name (this should not be possible)
+-   The user can create multiple tasks with the same name (this should not be possible)
+-   Pressing enter refreshes the page (preventDefault() should fix it)
 
 ## In Progress:
 
--   To create a new list the user should see a form not a prompt
+-   All the froms should have an exit/cancel button
 
 ## Done:
 
+-   To create a new list the user should use a form not a prompt
 -   Display all the task information to the user
 -   A task at a minimum they should have a title*, description*, dueDate*, checklist\* and priority*.
 -   The user should be able to create a new list
