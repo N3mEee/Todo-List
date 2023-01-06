@@ -3,14 +3,14 @@
 -   The user should be able to delete a task
 -   The user should be able to delete a list with all the tasks in it
 -   The user should be able to expand a single todo to see/edit its details
--   To crate a new list the user should see a form not a prompt
 
 ## In Progress:
 
--   Display all the task information to the user
+-   To create a new list the user should see a form not a prompt
 
 ## Done:
 
+-   Display all the task information to the user
 -   A task at a minimum they should have a title*, description*, dueDate*, checklist\* and priority*.
 -   The user should be able to create a new list
 -   The user should be able to create a new task
