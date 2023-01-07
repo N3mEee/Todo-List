@@ -25,7 +25,9 @@ export default function events() {
 
         createNewListBtn.addEventListener("click", (e) => {
             e.preventDefault();
-            const listName = form.children[1].value;
+
+            const listName = document.querySelector("input[id=list-name]").value;
+
             const hasName = listsArray.some((lists) => {
                 if (lists.listName === listName) {
                     return true;
@@ -75,11 +77,11 @@ export default function events() {
     function createNewTask(listsArray) {
         const main = document.querySelector(".main");
         const form = document.querySelector(".new-task-form");
-        const taskName = form.children[3];
-        const description = form.children[5];
-        const date = form.children[7];
-        const listName = form.children[9];
-        const priority = form.children[11];
+        const taskName = document.querySelector("input[id=task-name]");
+        const description = document.querySelector("textarea[id=description]");
+        const date = document.querySelector("input[id=date]");
+        const listName = document.querySelector("select[id=list]");
+        const priority = document.querySelector("select[id=priority-list]");
         const createNewTaskBtn = document.querySelector(".btn-new-task");
 
         createNewTaskBtn.addEventListener("click", (e) => {

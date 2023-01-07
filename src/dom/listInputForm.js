@@ -9,9 +9,11 @@ export default function listInputForm() {
     //List Name
     const listNameLabel = document.createElement("label");
     listNameLabel.textContent = "List Name";
+    listNameLabel.setAttribute("for", "list-name");
 
     const listName = document.createElement("input");
     listName.type = "text";
+    listName.id = "list-name";
 
     const button = document.createElement("button");
     button.textContent = "Add Task";

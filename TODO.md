@@ -3,16 +3,16 @@
 -   The user should be able to delete a task
 -   The user should be able to delete a list with all the tasks in it
 -   The user should be able to expand a single todo to see/edit its details
--   Split all the task DOM and logic from updateTasksDOM.JS
 
 ## Bugs:
 
 ## In Progress:
 
-- Option list is not a good way to pick a list: use dropdown options
+-   Split all the task DOM and logic from updateTasksDOM.JS
 
 ## Done:
 
+-   Option list is not a good way to pick a list: use dropdown options
 -   Pressing enter refreshes the page (preventDefault() should fix it)
 -   The user can create multiple lists with the same name (this should not be possible)
 -   align-items: center in tasks

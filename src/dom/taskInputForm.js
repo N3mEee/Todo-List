@@ -9,61 +9,71 @@ export default function taskInputForm(listsArray) {
     //Task Name
     const taskNameLabel = document.createElement("label");
     taskNameLabel.textContent = "Task Name";
+    taskNameLabel.setAttribute("for", "task-name");
 
     const taskName = document.createElement("input");
     taskName.type = "text";
+    taskName.id = "task-name";
 
     //Description
     const descriptionLabel = document.createElement("label");
     descriptionLabel.textContent = "Description";
+    descriptionLabel.setAttribute("for", "description");
 
     const description = document.createElement("textarea");
+    description.id = "description";
 
     //Date
     const dateLabel = document.createElement("label");
     dateLabel.textContent = "Date";
+    dateLabel.setAttribute("for", "date");
 
     const date = document.createElement("input");
     date.type = "date";
+    date.id = "date";
 
     //List Name
     const listNameLabel = document.createElement("label");
     listNameLabel.textContent = "List";
+    listNameLabel.setAttribute("for", "list");
 
-    const listName = document.createElement("input");
-    listName.setAttribute("list", "list");
+    const listName = document.createElement("select");
+    listName.setAttribute("id", "list");
 
-    //Priority Input
-    const priorityLabel = document.createElement("label");
-    priorityLabel.textContent = "Priority";
-
-    const priority = document.createElement("input");
-    priority.setAttribute("list", "priority-list");
-
-    //Data List
-    const datalist = document.createElement("datalist");
-    datalist.setAttribute("id", "list");
-
+    //List Options
     listsArray.forEach(function (element) {
         const option = document.createElement("option");
         option.value = element.listName;
-        datalist.appendChild(option);
+        option.textContent = element.listName;
+        listName.appendChild(option);
     });
 
-    //Priority List
-    const priorityList = document.createElement("datalist");
+    //Priority Label
+    const priorityLabel = document.createElement("label");
+    priorityLabel.setAttribute("for", "priority-list");
+    priorityLabel.textContent = "Priority";
+
+    //Priority select
+    const priorityList = document.createElement("select");
     priorityList.setAttribute("id", "priority-list");
 
+    //Priority options
     const optionOne = document.createElement("option");
     optionOne.value = "Red";
+    optionOne.textContent = "Red";
+
     priorityList.appendChild(optionOne);
 
     const optionTwo = document.createElement("option");
     optionTwo.value = "Yellow";
+    optionTwo.textContent = "Yellow";
+
     priorityList.appendChild(optionTwo);
 
     const optionThree = document.createElement("option");
     optionThree.value = "Green";
+    optionThree.textContent = "Green";
+
     priorityList.appendChild(optionThree);
 
     const button = document.createElement("button");
@@ -75,9 +85,6 @@ export default function taskInputForm(listsArray) {
     cancelBtn.textContent = "Cancel";
     cancelBtn.classList.add("btn-primary");
     cancelBtn.classList.add("btn-close-task-form");
-
-    form.appendChild(datalist);
-    form.appendChild(priorityList);
 
     form.appendChild(taskNameLabel);
     form.appendChild(taskName);
@@ -92,7 +99,7 @@ export default function taskInputForm(listsArray) {
     form.appendChild(listName);
 
     form.appendChild(priorityLabel);
-    form.appendChild(priority);
+    form.appendChild(priorityList);
 
     form.appendChild(button);
     form.appendChild(cancelBtn);
