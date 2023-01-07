@@ -50,11 +50,13 @@ body {
 }
 
 .list:hover {
-    background-color: rgb(231, 231, 231);
+    background-color: white;
+    border-radius: 8px;
 }
 
 .new-list {
     display: flex;
+    border: 1px solid lightblue;
     padding: 20px;
     gap: 10px;
     justify-content: flex-start;
@@ -72,8 +74,8 @@ body {
 }
 
 .main {
-    margin-left: 40px;
-    width: calc(100% - 40px);
+    padding: 0 40px;
+    width: calc(100% - 80px);
     height: 100%;
     display: grid;
     grid-template-rows: auto auto 1fr;
@@ -129,6 +131,7 @@ body {
     text-align: center;
     background-color: whitesmoke;
     justify-self: end;
+    border: 1px solid lightblue;
 }
 
 .main .new-task:hover {
@@ -144,7 +147,8 @@ body {
     height: 100%;
     display: grid;
     grid-template-rows: repeat(auto-fill, minmax(min-content, 40px));
-    align-items: center;
+    align-items: stretch;
+    gap: 5px;
 }
 
 .main .container .task {
@@ -152,9 +156,15 @@ body {
     grid-template-columns: 1fr 1fr 1fr 5fr 1fr;
     justify-items: start;
     align-items: center;
+    border: 1px solid gray;
+    border-radius: 10px;
 }
 .main .container .task .input {
     justify-self: center;
+}
+.main .container .task input[type="checkbox"] {
+    width: 50%;
+    height: 50%;
 }
 
 .main .new-list-form {
