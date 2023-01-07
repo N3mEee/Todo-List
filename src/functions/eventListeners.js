@@ -6,29 +6,29 @@ import taskInputForm from "../dom/taskInputForm";
 import listInputForm from "../dom/listInputForm";
 
 export default function events() {
-    const newListBtn = document.querySelector(".new-list");
-
+    //New List Form
     function newList(listsArray) {
+        const newListBtn = document.querySelector(".new-list");
+
         newListBtn.addEventListener("click", () => {
             listInputForm();
             createNewList(listsArray);
+            closeListFormEvent();
         });
     }
 
+    // Create a new list
     function createNewList(listsArray) {
         const main = document.querySelector(".main");
         const form = document.querySelector(".new-list-form");
-        const lists = document.querySelector(".lists");
         const createNewListBtn = document.querySelector(".btn-new-list");
 
         createNewListBtn.addEventListener("click", () => {
             const listName = form.children[1].value;
-
             if (listName.length < 3) {
                 return;
             } else {
                 listsArray.push(new NewList(listName));
-                lists.innerHTML = "<hr>";
                 updateLists(listsArray);
                 updateLocalStorage(listsArray);
             }
@@ -36,30 +36,29 @@ export default function events() {
         });
     }
 
-    function sidebarLists(listsArray) {
-        const sidebar = document.querySelector(".sidebar");
+    // Close the new list form
+    function closeListFormEvent() {
+        const btn = document.querySelector(".btn-close-list-form");
+        const main = document.querySelector(".main");
+        const listform = document.querySelector(".new-list-form");
 
-        sidebar.addEventListener("click", function (e) {
-            e.stopImmediatePropagation();
-
-            if (!e.target.classList.contains("list")) {
-                return;
-            } else {
-                updateMain(e.target.textContent, listsArray);
-            }
+        btn.addEventListener("click", (e) => {
+            main.removeChild(listform);
         });
     }
 
+    // New Task Form
     function newTask(listsArray) {
         const newTaskBtn = document.querySelector(".new-task");
 
         newTaskBtn.addEventListener("click", function (e) {
-            e.stopImmediatePropagation();
             taskInputForm(listsArray);
             createNewTask(listsArray);
+            closeTaskFormEvent();
         });
     }
 
+    // Create a new task
     function createNewTask(listsArray) {
         const main = document.querySelector(".main");
         const form = document.querySelector(".new-task-form");
@@ -68,9 +67,9 @@ export default function events() {
         const date = form.children[7];
         const listName = form.children[9];
         const priority = form.children[11];
+        const createNewTaskBtn = document.querySelector(".btn-new-task");
 
-        form.lastChild.addEventListener("click", (e) => {
-            e.stopImmediatePropagation();
+        createNewTaskBtn.addEventListener("click", (e) => {
             if (taskName.value.length < 3 || listName.value < 3) {
                 return;
             } else {
@@ -92,6 +91,18 @@ export default function events() {
         });
     }
 
+    // Close new task form
+    function closeTaskFormEvent() {
+        const btn = document.querySelector(".btn-close-task-form");
+        const main = document.querySelector(".main");
+        const taskForm = document.querySelector(".new-task-form");
+
+        btn.addEventListener("click", (e) => {
+            main.removeChild(taskForm);
+        });
+    }
+
+    //Checkbox
     function checkBox(listsArray) {
         const tasks = document.querySelectorAll(".task");
 
@@ -110,6 +121,19 @@ export default function events() {
                     });
                 });
             });
+        });
+    }
+
+    //Sidebar lists buttons
+    function sidebarLists(listsArray) {
+        const sidebar = document.querySelector(".sidebar");
+
+        sidebar.addEventListener("click", function (e) {
+            if (!e.target.classList.contains("list")) {
+                return;
+            } else {
+                updateMain(e.target.textContent, listsArray);
+            }
         });
     }
 

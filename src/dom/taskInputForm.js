@@ -71,6 +71,11 @@ export default function taskInputForm(listsArray) {
     button.classList.add("btn-primary");
     button.classList.add("btn-new-task");
 
+    const cancelBtn = document.createElement("div");
+    cancelBtn.textContent = "Cancel";
+    cancelBtn.classList.add("btn-primary");
+    cancelBtn.classList.add("btn-close-task-form");
+
     form.appendChild(datalist);
     form.appendChild(priorityList);
 
@@ -90,4 +95,5 @@ export default function taskInputForm(listsArray) {
     form.appendChild(priority);
 
     form.appendChild(button);
+    form.appendChild(cancelBtn);
 }

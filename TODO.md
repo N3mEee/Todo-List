@@ -10,6 +10,7 @@
 -   The user can create multiple lists with the same name (this should not be possible)
 -   The user can create multiple tasks with the same name (this should not be possible)
 -   Pressing enter refreshes the page (preventDefault() should fix it)
+-   align-items: center in tasks
 
 ## In Progress:
 

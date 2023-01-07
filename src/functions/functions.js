@@ -3,6 +3,8 @@ import NewTask from "./newTask";
 
 export function updateLists(listsArray) {
     const lists = document.querySelector(".lists");
+    lists.innerHTML = "<hr>";
+
     for (let i = 0; i < listsArray.length; i++) {
         const list = document.createElement("div");
         list.classList.add("list");

@@ -18,9 +18,13 @@ export default function listInputForm() {
     button.classList.add("btn-primary");
     button.classList.add("btn-new-list");
 
+    const cancelBtn = document.createElement("div");
+    cancelBtn.textContent = "Cancel";
+    cancelBtn.classList.add("btn-primary");
+    cancelBtn.classList.add("btn-close-list-form");
 
     form.appendChild(listNameLabel);
     form.appendChild(listName);
-
     form.appendChild(button);
+    form.appendChild(cancelBtn);
 }
