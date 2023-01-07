@@ -7,17 +7,17 @@
 
 ## Bugs:
 
--   The user can create multiple lists with the same name (this should not be possible)
--   The user can create multiple tasks with the same name (this should not be possible)
 -   Pressing enter refreshes the page (preventDefault() should fix it)
--   align-items: center in tasks
 
 ## In Progress:
 
--   All the froms should have an exit/cancel button
+-   The user can create multiple lists with the same name (this should not be possible)
+-   The user can create multiple tasks with the same name (this should not be possible)
 
 ## Done:
 
+-   align-items: center in tasks
+-   All the froms should have an exit/cancel button
 -   To create a new list the user should use a form not a prompt
 -   Display all the task information to the user
 -   A task at a minimum they should have a title*, description*, dueDate*, checklist\* and priority*.

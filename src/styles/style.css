@@ -151,6 +151,7 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 5fr 1fr;
     justify-items: start;
+    align-items: center;
 }
 .main .container .task .input {
     justify-self: center;
