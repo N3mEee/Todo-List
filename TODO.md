@@ -7,15 +7,14 @@
 
 ## Bugs:
 
--   Pressing enter refreshes the page (preventDefault() should fix it)
-
 ## In Progress:
 
--   The user can create multiple lists with the same name (this should not be possible)
--   The user can create multiple tasks with the same name (this should not be possible)
+- Option list is not a good way to pick a list: use dropdown options
 
 ## Done:
 
+-   Pressing enter refreshes the page (preventDefault() should fix it)
+-   The user can create multiple lists with the same name (this should not be possible)
 -   align-items: center in tasks
 -   All the froms should have an exit/cancel button
 -   To create a new list the user should use a form not a prompt

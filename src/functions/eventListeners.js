@@ -10,7 +10,7 @@ export default function events() {
     function newList(listsArray) {
         const newListBtn = document.querySelector(".new-list");
 
-        newListBtn.addEventListener("click", () => {
+        newListBtn.addEventListener("click", (e) => {
             listInputForm();
             createNewList(listsArray);
             closeListFormEvent();
@@ -23,16 +23,28 @@ export default function events() {
         const form = document.querySelector(".new-list-form");
         const createNewListBtn = document.querySelector(".btn-new-list");
 
-        createNewListBtn.addEventListener("click", () => {
+        createNewListBtn.addEventListener("click", (e) => {
+            e.preventDefault();
             const listName = form.children[1].value;
+            const hasName = listsArray.some((lists) => {
+                if (lists.listName === listName) {
+                    return true;
+                } else {
+                    return false;
+                }
+            });
             if (listName.length < 3) {
                 return;
             } else {
-                listsArray.push(new NewList(listName));
-                updateLists(listsArray);
-                updateLocalStorage(listsArray);
+                if (hasName) {
+                    return;
+                } else {
+                    listsArray.push(new NewList(listName));
+                    updateLists(listsArray);
+                    updateLocalStorage(listsArray);
+                    main.removeChild(form);
+                }
             }
-            main.removeChild(form);
         });
     }
 
@@ -43,6 +55,7 @@ export default function events() {
         const listform = document.querySelector(".new-list-form");
 
         btn.addEventListener("click", (e) => {
+            e.preventDefault();
             main.removeChild(listform);
         });
     }
@@ -70,6 +83,7 @@ export default function events() {
         const createNewTaskBtn = document.querySelector(".btn-new-task");
 
         createNewTaskBtn.addEventListener("click", (e) => {
+            e.preventDefault();
             if (taskName.value.length < 3 || listName.value < 3) {
                 return;
             } else {
@@ -98,6 +112,7 @@ export default function events() {
         const taskForm = document.querySelector(".new-task-form");
 
         btn.addEventListener("click", (e) => {
+            e.preventDefault();
             main.removeChild(taskForm);
         });
     }

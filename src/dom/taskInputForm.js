@@ -66,12 +66,12 @@ export default function taskInputForm(listsArray) {
     optionThree.value = "Green";
     priorityList.appendChild(optionThree);
 
-    const button = document.createElement("div");
+    const button = document.createElement("button");
     button.textContent = "Add Task";
     button.classList.add("btn-primary");
     button.classList.add("btn-new-task");
 
-    const cancelBtn = document.createElement("div");
+    const cancelBtn = document.createElement("button");
     cancelBtn.textContent = "Cancel";
     cancelBtn.classList.add("btn-primary");
     cancelBtn.classList.add("btn-close-task-form");

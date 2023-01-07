@@ -13,12 +13,12 @@ export default function listInputForm() {
     const listName = document.createElement("input");
     listName.type = "text";
 
-    const button = document.createElement("div");
+    const button = document.createElement("button");
     button.textContent = "Add Task";
     button.classList.add("btn-primary");
     button.classList.add("btn-new-list");
 
-    const cancelBtn = document.createElement("div");
+    const cancelBtn = document.createElement("button");
     cancelBtn.textContent = "Cancel";
     cancelBtn.classList.add("btn-primary");
     cancelBtn.classList.add("btn-close-list-form");
