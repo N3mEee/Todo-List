@@ -81,6 +81,12 @@ body {
     grid-template-rows: auto auto 1fr;
 }
 
+.main .container-title {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
 .main .new-task-form {
     padding: 20px;
     position: absolute;
@@ -146,14 +152,14 @@ body {
     width: 100%;
     height: 100%;
     display: grid;
-    grid-template-rows: repeat(auto-fill, minmax(min-content, 40px));
+    grid-template-rows: repeat(auto-fit, minmax(min-content, 40px));
     align-items: stretch;
     gap: 5px;
 }
 
 .main .container .task {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 5fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 5fr 1fr 1fr;
     justify-items: start;
     align-items: center;
     border: 1px solid gray;

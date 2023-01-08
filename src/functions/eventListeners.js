@@ -1,7 +1,6 @@
 import NewList from "./newList";
 import NewTask from "./newTask";
-import { updateLists, updateLocalStorage } from "./functions";
-import updateMain from "../dom/updateTasksDOM";
+import { updateTasks, updateLists, updateLocalStorage } from "./functions";
 import taskInputForm from "../dom/taskInputForm";
 import listInputForm from "../dom/listInputForm";
 
@@ -102,7 +101,7 @@ export default function events() {
                 });
                 main.removeChild(form);
                 updateLocalStorage(listsArray);
-                updateMain(listName.value, listsArray);
+                updateTasks(listName.value, listsArray);
             }
         });
     }
@@ -141,6 +140,44 @@ export default function events() {
         });
     }
 
+    //deleteTask
+    function deleteTask(listsArray) {
+        const tasks = document.querySelectorAll(".task");
+        tasks.forEach((taskItem) => {
+            const deleteTaskBtn = taskItem.querySelector(".delete-task-btn");
+            const listName = document.querySelector(".title").textContent;
+
+            deleteTaskBtn.addEventListener("click", (e) => {
+                listsArray.forEach((list) => {
+                    list.task.forEach((task) => {
+                        if (task.titleValue === e.target.parentNode.children[1].textContent) {
+                            list.task.splice(list.tasks.indexOf(task), 1);
+                            updateLocalStorage(listsArray);
+                            updateTasks(listName, listsArray);
+                        }
+                    });
+                });
+            });
+        });
+    }
+
+    //deleteList
+    function deleteList(listsArray) {
+        const deleteListBtn = document.querySelector(".delete-list-btn");
+
+        deleteListBtn.addEventListener("click", (e) => {
+            listsArray.forEach((list) => {
+                const listName = document.querySelector(".title").textContent;
+                if (list.listName === listName) {
+                    listsArray.splice(listsArray.indexOf(list), 1);
+                    updateLocalStorage(listsArray);
+                    updateTasks("My Day", listsArray);
+                    updateLists(listsArray);
+                }
+            });
+        });
+    }
+
     //Sidebar lists buttons
     function sidebarLists(listsArray) {
         const sidebar = document.querySelector(".sidebar");
@@ -149,10 +186,10 @@ export default function events() {
             if (!e.target.classList.contains("list")) {
                 return;
             } else {
-                updateMain(e.target.textContent, listsArray);
+                updateTasks(e.target.textContent, listsArray);
             }
         });
     }
 
-    return { sidebarLists, newList, newTask, checkBox };
+    return { sidebarLists, newList, newTask, checkBox, deleteTask, deleteList };
 }
