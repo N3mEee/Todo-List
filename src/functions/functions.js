@@ -5,9 +5,9 @@ import { isToday } from "date-fns";
 import createTaskElement from "../dom/createTaskElement";
 
 export function updateTasks(listName, listArray) {
-    const title = document.querySelector(".title");
     const container = document.querySelector(".container");
     container.innerHTML = "";
+    const title = document.querySelector(".title");
     //title
     title.textContent = listName;
 
@@ -16,27 +16,28 @@ export function updateTasks(listName, listArray) {
         if (listName === "Tasks") {
             element.task.forEach((item) => {
                 createTaskElement(item);
-                document.querySelector(".delete-list-btn").style.display = "none";
             });
+            document.querySelector(".delete-list-btn").style.display = "none";
         } else if (listName === "My Day") {
             element.task.forEach((item) => {
                 const dateArray = item.date.split("-");
                 const newDate = `${dateArray[2]}, ${dateArray[1]}, ${dateArray[0]}`;
                 if (isToday(new Date(newDate))) {
                     createTaskElement(item);
-                    document.querySelector(".delete-list-btn").style.display = "none";
                 }
             });
-        } else if (element.name === listName) {
+            document.querySelector(".delete-list-btn").style.display = "none";
+        } else {
             element.task.forEach((item) => {
                 createTaskElement(item);
-                document.querySelector(".delete-list-btn").style.display = "block";
             });
+            document.querySelector(".delete-list-btn").style.display = "block";
         }
     });
     events().checkBox(listArray);
     events().deleteTask(listArray);
     events().deleteList(listArray);
+    events().viewTask(listArray);
 }
 
 export function updateLists(listsArray) {

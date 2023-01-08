@@ -3,6 +3,7 @@ import NewTask from "./newTask";
 import { updateTasks, updateLists, updateLocalStorage } from "./functions";
 import taskInputForm from "../dom/taskInputForm";
 import listInputForm from "../dom/listInputForm";
+import taskView from "../dom/taskView";
 
 export default function events() {
     //New List Form
@@ -178,6 +179,51 @@ export default function events() {
         });
     }
 
+    //viewTask
+    function viewTask(listsArray) {
+        const viewTaskBtn = document.querySelectorAll(".view-task-btn");
+
+        viewTaskBtn.forEach((task) => {
+            task.addEventListener("click", (e) => {
+                const main = document.querySelector(".main");
+                const taskContainer = document.querySelector(".view-task-container");
+                if (taskContainer !== null) {
+                    main.removeChild(taskContainer);
+                }
+                const taskName = e.target.parentNode.children[1].textContent;
+                listsArray.forEach((lists) => {
+                    let indexOfList;
+                    const list = lists.task.filter((task) => {
+                        if (task.titleValue === taskName) {
+                            indexOfList = listsArray.indexOf(lists);
+                            return true;
+                        }
+                        return false;
+                    });
+                    if (list.length > 0) {
+                        const lista = listsArray[indexOfList];
+                        const task = lista.task.filter((task) => {
+                            return task.titleValue === taskName;
+                        });
+                        taskView(task[0].title, task[0].description, task[0].date, lista.name, task[0].priority);
+                        cancelViewTask();
+                    }
+                });
+            });
+        });
+    }
+
+    //cancel view Task
+    function cancelViewTask() {
+        const main = document.querySelector(".main");
+        const cancelViewTask = document.querySelector(".cancel-view-task-btn");
+        const taskContainer = document.querySelector(".view-task-container");
+
+        cancelViewTask.addEventListener("click", (e) => {
+            main.removeChild(taskContainer);
+        });
+    }
+
     //Sidebar lists buttons
     function sidebarLists(listsArray) {
         const sidebar = document.querySelector(".sidebar");
@@ -191,5 +237,5 @@ export default function events() {
         });
     }
 
-    return { sidebarLists, newList, newTask, checkBox, deleteTask, deleteList };
+    return { sidebarLists, newList, newTask, checkBox, deleteTask, deleteList, viewTask };
 }

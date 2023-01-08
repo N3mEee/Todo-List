@@ -34,4 +34,9 @@ export default function createTaskElement(item) {
     deleteTaskBtn.classList.add("delete-task-btn");
     deleteTaskBtn.textContent = "Delete";
     task.appendChild(deleteTaskBtn);
+
+    const viewTask = document.createElement("button");
+    viewTask.classList.add("view-task-btn");
+    viewTask.textContent = "View";
+    task.appendChild(viewTask);
 }
