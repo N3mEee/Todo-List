@@ -161,6 +161,23 @@ export default function events() {
         });
     }
 
+    //deleteList
+    function deleteList(listsArray) {
+        const deleteListBtn = document.querySelector(".delete-list-btn");
+
+        deleteListBtn.addEventListener("click", (e) => {
+            listsArray.forEach((list) => {
+                const listName = document.querySelector(".title").textContent;
+                if (list.listName === listName) {
+                    listsArray.splice(listsArray.indexOf(list), 1);
+                    updateLocalStorage(listsArray);
+                    updateTasks("My Day", listsArray);
+                    updateLists(listsArray);
+                }
+            });
+        });
+    }
+
     //Sidebar lists buttons
     function sidebarLists(listsArray) {
         const sidebar = document.querySelector(".sidebar");
@@ -174,5 +191,5 @@ export default function events() {
         });
     }
 
-    return { sidebarLists, newList, newTask, checkBox, deleteTask };
+    return { sidebarLists, newList, newTask, checkBox, deleteTask, deleteList };
 }

@@ -1,15 +1,16 @@
 ## New:
 
--   The user should be able to expand a single todo to see/edit its details
+-   Empty input fields should trigger a warning
 
 ## Bugs:
 
 ## In Progress:
 
--   The user should be able to delete a list with all the tasks in it
+-   The user should be able to expand a single todo to see/edit its details
 
 ## Done:
 
+-   The user should be able to delete a list with all the tasks in it
 -   The user should be able to delete a task
 -   Split all the task DOM and logic from updateTasksDOM.JS
 -   Option list is not a good way to pick a list: use dropdown options

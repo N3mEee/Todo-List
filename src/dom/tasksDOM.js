@@ -16,10 +16,20 @@ export default function content() {
     img.src = PlusImage;
     newTaskBtn.appendChild(img);
 
+    // Title/deleteBtn container
+    const containerTitle = document.createElement("div");
+    containerTitle.classList.add("container-title");
+    main.appendChild(containerTitle);
+
     //Create title
     const title = document.createElement("div");
     title.setAttribute("class", "title");
-    main.appendChild(title);
+    containerTitle.appendChild(title);
+
+    const deleteListBtn = document.createElement("button");
+    deleteListBtn.setAttribute("class", "delete-list-btn");
+    deleteListBtn.textContent = "Delete";
+    containerTitle.appendChild(deleteListBtn);
 
     //Create content container
     const container = document.createElement("div");
