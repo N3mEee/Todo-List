@@ -12,6 +12,7 @@ export default function listInputForm() {
     listNameLabel.setAttribute("for", "list-name");
 
     const listName = document.createElement("input");
+    listName.required = true;
     listName.type = "text";
     listName.id = "list-name";
 

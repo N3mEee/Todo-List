@@ -24,20 +24,22 @@ export default function events() {
         const createNewListBtn = document.querySelector(".btn-new-list");
 
         createNewListBtn.addEventListener("click", (e) => {
-            e.preventDefault();
-
-            const listName = document.querySelector("input[id=list-name]").value;
-
-            const hasName = listsArray.some((lists) => {
-                if (lists.listName === listName) {
-                    return true;
-                } else {
-                    return false;
-                }
-            });
-            if (listName.length < 3) {
-                return;
+            let isFormValid = form.checkValidity();
+            if (!isFormValid) {
+                form.reportValidity();
             } else {
+                e.preventDefault();
+
+                const listName = document.querySelector("input[id=list-name]").value;
+
+                const hasName = listsArray.some((lists) => {
+                    if (lists.listName === listName) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                });
+
                 if (hasName) {
                     return;
                 } else {
@@ -85,24 +87,29 @@ export default function events() {
         const createNewTaskBtn = document.querySelector(".btn-new-task");
 
         createNewTaskBtn.addEventListener("click", (e) => {
-            e.preventDefault();
-            if (taskName.value.length < 3 || listName.value < 3) {
-                return;
+            let isFormValid = form.checkValidity();
+            if (!isFormValid) {
+                form.reportValidity();
             } else {
-                listsArray.forEach((element) => {
-                    if (element.listName === listName.value) {
-                        element.newTask = new NewTask(
-                            taskName.value,
-                            false,
-                            date.value,
-                            description.value,
-                            priority.value
-                        );
-                    }
-                });
-                main.removeChild(form);
-                updateLocalStorage(listsArray);
-                updateTasks(listName.value, listsArray);
+                e.preventDefault();
+                if (taskName.value.length < 3 || listName.value < 3) {
+                    return;
+                } else {
+                    listsArray.forEach((element) => {
+                        if (element.listName === listName.value) {
+                            element.newTask = new NewTask(
+                                taskName.value,
+                                false,
+                                date.value,
+                                description.value,
+                                priority.value
+                            );
+                        }
+                    });
+                    main.removeChild(form);
+                    updateLocalStorage(listsArray);
+                    updateTasks(listName.value, listsArray);
+                }
             }
         });
     }
