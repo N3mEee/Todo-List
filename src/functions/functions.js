@@ -27,7 +27,7 @@ export function updateTasks(listName, listArray) {
                 }
             });
             document.querySelector(".delete-list-btn").style.display = "none";
-        } else {
+        } else if (listName === element.name) {
             element.task.forEach((item) => {
                 createTaskElement(item);
             });
