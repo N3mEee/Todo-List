@@ -1,7 +1,6 @@
 import NewList from "./newList";
 import NewTask from "./newTask";
-import { updateLists, updateLocalStorage } from "./functions";
-import updateMain from "../dom/updateTasksDOM";
+import { updateTasks, updateLists, updateLocalStorage } from "./functions";
 import taskInputForm from "../dom/taskInputForm";
 import listInputForm from "../dom/listInputForm";
 
@@ -102,7 +101,7 @@ export default function events() {
                 });
                 main.removeChild(form);
                 updateLocalStorage(listsArray);
-                updateMain(listName.value, listsArray);
+                updateTasks(listName.value, listsArray);
             }
         });
     }
@@ -149,7 +148,7 @@ export default function events() {
             if (!e.target.classList.contains("list")) {
                 return;
             } else {
-                updateMain(e.target.textContent, listsArray);
+                updateTasks(e.target.textContent, listsArray);
             }
         });
     }
