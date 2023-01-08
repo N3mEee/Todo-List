@@ -1,15 +1,15 @@
 ## New:
 
--   Empty input fields should trigger a warning
-
 ## Bugs:
 
 ## In Progress:
 
--   The user should be able to expand a single todo to see/edit its details
+-   The user should be able to expand a single todo to edit its details
 
 ## Done:
 
+-   Empty input fields should trigger a warning
+-   The user should be able to expand a single todo to see its details
 -   The user should be able to delete a list with all the tasks in it
 -   The user should be able to delete a task
 -   Split all the task DOM and logic from updateTasksDOM.JS

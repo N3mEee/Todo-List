@@ -13,6 +13,7 @@ export default function taskInputForm(listsArray) {
 
     const taskName = document.createElement("input");
     taskName.type = "text";
+    taskName.required = true;
     taskName.id = "task-name";
 
     //Description
@@ -22,6 +23,7 @@ export default function taskInputForm(listsArray) {
 
     const description = document.createElement("textarea");
     description.id = "description";
+    description.required = true;
 
     //Date
     const dateLabel = document.createElement("label");
@@ -31,6 +33,7 @@ export default function taskInputForm(listsArray) {
     const date = document.createElement("input");
     date.type = "date";
     date.id = "date";
+    date.required = true;
 
     //List Name
     const listNameLabel = document.createElement("label");
@@ -39,6 +42,7 @@ export default function taskInputForm(listsArray) {
 
     const listName = document.createElement("select");
     listName.setAttribute("id", "list");
+    listName.required = true;
 
     //List Options
     listsArray.forEach(function (element) {
@@ -56,6 +60,7 @@ export default function taskInputForm(listsArray) {
     //Priority select
     const priorityList = document.createElement("select");
     priorityList.setAttribute("id", "priority-list");
+    priorityList.required = true;
 
     //Priority options
     const optionOne = document.createElement("option");

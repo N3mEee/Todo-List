@@ -28,6 +28,8 @@ export default function content() {
 
     const deleteListBtn = document.createElement("button");
     deleteListBtn.setAttribute("class", "delete-list-btn");
+    deleteListBtn.style.display = "none";
+
     deleteListBtn.textContent = "Delete";
     containerTitle.appendChild(deleteListBtn);
 

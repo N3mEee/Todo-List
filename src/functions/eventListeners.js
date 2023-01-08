@@ -3,6 +3,7 @@ import NewTask from "./newTask";
 import { updateTasks, updateLists, updateLocalStorage } from "./functions";
 import taskInputForm from "../dom/taskInputForm";
 import listInputForm from "../dom/listInputForm";
+import taskView from "../dom/taskView";
 
 export default function events() {
     //New List Form
@@ -23,20 +24,22 @@ export default function events() {
         const createNewListBtn = document.querySelector(".btn-new-list");
 
         createNewListBtn.addEventListener("click", (e) => {
-            e.preventDefault();
-
-            const listName = document.querySelector("input[id=list-name]").value;
-
-            const hasName = listsArray.some((lists) => {
-                if (lists.listName === listName) {
-                    return true;
-                } else {
-                    return false;
-                }
-            });
-            if (listName.length < 3) {
-                return;
+            let isFormValid = form.checkValidity();
+            if (!isFormValid) {
+                form.reportValidity();
             } else {
+                e.preventDefault();
+
+                const listName = document.querySelector("input[id=list-name]").value;
+
+                const hasName = listsArray.some((lists) => {
+                    if (lists.listName === listName) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                });
+
                 if (hasName) {
                     return;
                 } else {
@@ -84,24 +87,29 @@ export default function events() {
         const createNewTaskBtn = document.querySelector(".btn-new-task");
 
         createNewTaskBtn.addEventListener("click", (e) => {
-            e.preventDefault();
-            if (taskName.value.length < 3 || listName.value < 3) {
-                return;
+            let isFormValid = form.checkValidity();
+            if (!isFormValid) {
+                form.reportValidity();
             } else {
-                listsArray.forEach((element) => {
-                    if (element.listName === listName.value) {
-                        element.newTask = new NewTask(
-                            taskName.value,
-                            false,
-                            date.value,
-                            description.value,
-                            priority.value
-                        );
-                    }
-                });
-                main.removeChild(form);
-                updateLocalStorage(listsArray);
-                updateTasks(listName.value, listsArray);
+                e.preventDefault();
+                if (taskName.value.length < 3 || listName.value < 3) {
+                    return;
+                } else {
+                    listsArray.forEach((element) => {
+                        if (element.listName === listName.value) {
+                            element.newTask = new NewTask(
+                                taskName.value,
+                                false,
+                                date.value,
+                                description.value,
+                                priority.value
+                            );
+                        }
+                    });
+                    main.removeChild(form);
+                    updateLocalStorage(listsArray);
+                    updateTasks(listName.value, listsArray);
+                }
             }
         });
     }
@@ -178,6 +186,51 @@ export default function events() {
         });
     }
 
+    //viewTask
+    function viewTask(listsArray) {
+        const viewTaskBtn = document.querySelectorAll(".view-task-btn");
+
+        viewTaskBtn.forEach((task) => {
+            task.addEventListener("click", (e) => {
+                const main = document.querySelector(".main");
+                const taskContainer = document.querySelector(".view-task-container");
+                if (taskContainer !== null) {
+                    main.removeChild(taskContainer);
+                }
+                const taskName = e.target.parentNode.children[1].textContent;
+                listsArray.forEach((lists) => {
+                    let indexOfList;
+                    const list = lists.task.filter((task) => {
+                        if (task.titleValue === taskName) {
+                            indexOfList = listsArray.indexOf(lists);
+                            return true;
+                        }
+                        return false;
+                    });
+                    if (list.length > 0) {
+                        const lista = listsArray[indexOfList];
+                        const task = lista.task.filter((task) => {
+                            return task.titleValue === taskName;
+                        });
+                        taskView(task[0].title, task[0].description, task[0].date, lista.name, task[0].priority);
+                        cancelViewTask();
+                    }
+                });
+            });
+        });
+    }
+
+    //cancel view Task
+    function cancelViewTask() {
+        const main = document.querySelector(".main");
+        const cancelViewTask = document.querySelector(".cancel-view-task-btn");
+        const taskContainer = document.querySelector(".view-task-container");
+
+        cancelViewTask.addEventListener("click", (e) => {
+            main.removeChild(taskContainer);
+        });
+    }
+
     //Sidebar lists buttons
     function sidebarLists(listsArray) {
         const sidebar = document.querySelector(".sidebar");
@@ -191,5 +244,5 @@ export default function events() {
         });
     }
 
-    return { sidebarLists, newList, newTask, checkBox, deleteTask, deleteList };
+    return { sidebarLists, newList, newTask, checkBox, deleteTask, deleteList, viewTask };
 }
