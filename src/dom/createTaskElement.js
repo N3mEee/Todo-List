@@ -29,4 +29,9 @@ export default function createTaskElement(item) {
     priority.classList.add("task-priority");
     priority.textContent = item.priority;
     task.appendChild(priority);
+
+    const deleteTaskBtn = document.createElement("button");
+    deleteTaskBtn.classList.add("delete-task-btn");
+    deleteTaskBtn.textContent = "Delete";
+    task.appendChild(deleteTaskBtn);
 }

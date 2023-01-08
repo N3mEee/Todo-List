@@ -140,6 +140,27 @@ export default function events() {
         });
     }
 
+    //deleteTask
+    function deleteTask(listsArray) {
+        const tasks = document.querySelectorAll(".task");
+        tasks.forEach((taskItem) => {
+            const deleteTaskBtn = taskItem.querySelector(".delete-task-btn");
+            const listName = document.querySelector(".title").textContent;
+
+            deleteTaskBtn.addEventListener("click", (e) => {
+                listsArray.forEach((list) => {
+                    list.task.forEach((task) => {
+                        if (task.titleValue === e.target.parentNode.children[1].textContent) {
+                            list.task.splice(list.tasks.indexOf(task), 1);
+                            updateLocalStorage(listsArray);
+                            updateTasks(listName, listsArray);
+                        }
+                    });
+                });
+            });
+        });
+    }
+
     //Sidebar lists buttons
     function sidebarLists(listsArray) {
         const sidebar = document.querySelector(".sidebar");
@@ -153,5 +174,5 @@ export default function events() {
         });
     }
 
-    return { sidebarLists, newList, newTask, checkBox };
+    return { sidebarLists, newList, newTask, checkBox, deleteTask };
 }

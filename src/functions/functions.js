@@ -32,6 +32,7 @@ export function updateTasks(listName, listArray) {
         }
     });
     events().checkBox(listArray);
+    events().deleteTask(listArray);
 }
 
 export function updateLists(listsArray) {
