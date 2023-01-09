@@ -4,6 +4,7 @@
 
 ## In Progress:
 
+-   Style
 -   The user should be able to expand a single todo to edit its details
 
 ## Done:

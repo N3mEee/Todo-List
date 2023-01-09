@@ -20,9 +20,7 @@ export function updateTasks(listName, listArray) {
             document.querySelector(".delete-list-btn").style.display = "none";
         } else if (listName === "My Day") {
             element.task.forEach((item) => {
-                const dateArray = item.date.split("-");
-                const newDate = `${dateArray[2]}, ${dateArray[1]}, ${dateArray[0]}`;
-                if (isToday(new Date(newDate))) {
+                if (isToday(new Date(item.date.split("-").reverse().join(",")))) {
                     createTaskElement(item);
                 }
             });

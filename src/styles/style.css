@@ -81,6 +81,31 @@ body {
     grid-template-rows: auto auto 1fr;
 }
 
+.view-task-header {
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 2px 1px -1px white;
+    padding-bottom: 15px;
+}
+
+.cancel-view-task-btn {
+    align-self: flex-end;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    border-radius: 50px;
+    background-color: whitesmoke;
+    border: 1px solid lightblue;
+}
+.cancel-view-task-btn:hover {
+    background-color: lightblue;
+}
+
+.view-task-header-title {
+    display: flex;
+    gap: 5px;
+}
+
 .main .container-title {
     display: flex;
     justify-content: flex-start;
@@ -177,7 +202,6 @@ body {
 
 .main .view-task-container {
     position: absolute;
-    padding: 20px;
     margin: auto;
     left: 0;
     right: 0;
@@ -189,7 +213,10 @@ body {
     flex-direction: column;
     background-color: lightcoral;
 }
-
+.task-view-content {
+    display: flex;
+    justify-content: space-between;
+}
 .main .new-list-form {
     padding: 20px;
     position: absolute;
