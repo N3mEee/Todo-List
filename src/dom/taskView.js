@@ -65,5 +65,5 @@ export default function taskView(viewName, viewChecked, viewDescription, viewDat
             </select>
         </div>
     </div>`;
-    events().saveEdits(taskName, viewChecked, description, date, priority, viewListName);
+    events().saveEdits();
 }
