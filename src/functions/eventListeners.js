@@ -212,7 +212,14 @@ export default function events() {
                         const task = lista.task.filter((task) => {
                             return task.titleValue === taskName;
                         });
-                        taskView(task[0].title, task[0].description, task[0].date, lista.name, task[0].priority);
+                        taskView(
+                            task[0].title,
+                            task[0].checked,
+                            task[0].description,
+                            task[0].date,
+                            lista.name,
+                            task[0].priority
+                        );
                         cancelViewTask();
                     }
                 });
@@ -244,5 +251,20 @@ export default function events() {
         });
     }
 
-    return { sidebarLists, newList, newTask, checkBox, deleteTask, deleteList, viewTask };
+    //Save edits
+    function saveEdits() {
+        const saveEditsButton = document.querySelector(".save-edits");
+
+        saveEditsButton.addEventListener("click", (e) => {
+            const taskName = document.querySelector("#viewName").value;
+            const description = document.querySelector("#viewDescription").value;
+            const date = document.querySelector("#viewDdate").value;
+            const priority = document.querySelector("#viewPriority").value;
+            console.table(taskName, description, date, priority);
+
+            //TODO: update the task info with the new information
+        });
+    }
+
+    return { sidebarLists, newList, newTask, checkBox, deleteTask, deleteList, viewTask, saveEdits };
 }

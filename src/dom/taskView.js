@@ -1,7 +1,8 @@
 import exitImage from "/src/assets/exit.svg";
 import projectImage from "/src/assets/project.svg";
+import events from "../functions/eventListeners";
 
-export default function taskView(viewName, viewDescription, viewDate, viewListName, viewPriority) {
+export default function taskView(viewName, viewChecked, viewDescription, viewDate, viewListName, viewPriority) {
     const main = document.querySelector(".main");
 
     //container
@@ -38,26 +39,31 @@ export default function taskView(viewName, viewDescription, viewDate, viewListNa
     const taskViewContent = document.createElement("div");
     taskViewContent.classList.add("task-view-content");
     taskContainer.appendChild(taskViewContent);
-
     taskViewContent.innerHTML = `
     <div class="left" style="display: flex; gap: 5px; flex-direction: column;">
-            <div class="title-container" style="display: flex; gap: 5px;">
-                <div class="task-name-label">Task Name</div>
-                <div class="task-name">${viewName}</div>
-            </div>
-            <div class="description" style="display: flex; gap: 5px;">
-                <div class="description-label">Description</div>
-                <div class="description">${viewDescription}</div>
-            </div>
+        <div class="title-container" style="padding: 10px; display: flex; gap: 5px;">
+            <div class="task-name-label">Task Name:</div>
+            <input type="text" id="viewName" value="${viewName}"></input>
         </div>
-        <div class="right" style="display: flex; gap: 5px; flex-direction: column;">
-            <div class="date" style="display: flex; gap: 5px;">
-                <div class="date-label">Due date</div>
-                <div class="date">${viewDate}</div>
-            </div>
-            <div class="priority" style="display: flex; gap: 5px;">
-                <div class="priority-label">Priority</div>
-                <div class="priority">${viewPriority}</div>
+        <div class="description" style="padding: 10px; display: flex; gap: 5px;">
+            <div class="description-label">Description:</div>
+            <textarea id="viewDescription">${viewDescription}</textarea>
+        </div>
+        <button class="save-edits">Save Edits</button>
+    </div>
+    <div class="right" style="display: flex; gap: 5px; flex-direction: column;">
+        <div class="date" style="padding: 10px; display: flex; gap: 5px;">
+            <div class="date-label">Due date:</div>
+            <input type="date" id="viewDdate" value="${viewDate.split("-").reverse().join("-")}"></input>
+        </div>
+        <div class="priority" style="padding: 10px; display: flex; gap: 5px;">
+            <div class="priority-label">Priority:</div>
+            <select id="viewPriority" required value="${viewPriority}">
+            <option value="Red">Red</option>
+            <option value="Yellow">Yellow</option>
+            <option value="Green">Green</option>
+            </select>
         </div>
     </div>`;
+    events().saveEdits(taskName, viewChecked, description, date, priority, viewListName);
 }
