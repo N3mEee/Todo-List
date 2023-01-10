@@ -30,13 +30,13 @@ export default function createTaskElement(item) {
     priority.textContent = item.priority;
     task.appendChild(priority);
 
-    const deleteTaskBtn = document.createElement("button");
-    deleteTaskBtn.classList.add("delete-task-btn");
-    deleteTaskBtn.textContent = "Delete";
-    task.appendChild(deleteTaskBtn);
-
     const viewTask = document.createElement("button");
     viewTask.classList.add("view-task-btn");
     viewTask.textContent = "View";
     task.appendChild(viewTask);
+
+    const deleteTaskBtn = document.createElement("button");
+    deleteTaskBtn.classList.add("delete-task-btn");
+    deleteTaskBtn.textContent = "Delete";
+    task.appendChild(deleteTaskBtn);
 }

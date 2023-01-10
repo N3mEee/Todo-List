@@ -1,5 +1,6 @@
 import NewList from "./newList";
 import NewTask from "./newTask";
+import { format } from "date-fns";
 import { updateTasks, updateLists, updateLocalStorage } from "./functions";
 import taskInputForm from "../dom/taskInputForm";
 import listInputForm from "../dom/listInputForm";
@@ -221,9 +222,36 @@ export default function events() {
                             task[0].priority
                         );
                         cancelViewTask();
+                        const indexOfTask = lista.task.indexOf(task[0]);
+                        saveEdits(listsArray, indexOfList, indexOfTask);
                     }
                 });
             });
+        });
+    }
+
+    //Save edits
+    function saveEdits(listsArray, indexOfList, indexOfTask) {
+        const saveEditsButton = document.querySelector(".save-edits");
+
+        saveEditsButton.addEventListener("click", (e) => {
+            const taskName = document.querySelector("#viewName").value;
+            const description = document.querySelector("#viewDescription").value;
+            const date = document.querySelector("#viewDdate").value;
+            const priority = document.querySelector("#viewPriority").value;
+            const task = listsArray[indexOfList].task[indexOfTask];
+
+            task.title = taskName;
+            task.description = description;
+            task.date = format(new Date(date), "dd-MM-yyyy");
+            task.priority = priority;
+
+            updateLocalStorage(listsArray);
+            updateTasks(listsArray[indexOfList].name, listsArray);
+
+            const main = document.querySelector(".main");
+            const taskContainer = document.querySelector(".view-task-container");
+            main.removeChild(taskContainer);
         });
     }
 
@@ -248,21 +276,6 @@ export default function events() {
             } else {
                 updateTasks(e.target.textContent, listsArray);
             }
-        });
-    }
-
-    //Save edits
-    function saveEdits() {
-        const saveEditsButton = document.querySelector(".save-edits");
-
-        saveEditsButton.addEventListener("click", (e) => {
-            const taskName = document.querySelector("#viewName").value;
-            const description = document.querySelector("#viewDescription").value;
-            const date = document.querySelector("#viewDdate").value;
-            const priority = document.querySelector("#viewPriority").value;
-            console.table(taskName, description, date, priority);
-
-            //TODO: update the task info with the new information
         });
     }
 

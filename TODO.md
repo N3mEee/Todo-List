@@ -5,10 +5,10 @@
 ## In Progress:
 
 -   Style
--   Update the task info with the new information (eventListeners.js 265)
 
 ## Done:
 
+-   Update the task info with the new information
 -   The user should be able to expand a single task to edit its details
 -   Empty input fields should trigger a warning
 -   The user should be able to expand a single task to see its details

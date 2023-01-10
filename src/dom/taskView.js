@@ -1,6 +1,5 @@
 import exitImage from "/src/assets/exit.svg";
 import projectImage from "/src/assets/project.svg";
-import events from "../functions/eventListeners";
 
 export default function taskView(viewName, viewChecked, viewDescription, viewDate, viewListName, viewPriority) {
     const main = document.querySelector(".main");
@@ -58,12 +57,27 @@ export default function taskView(viewName, viewChecked, viewDescription, viewDat
         </div>
         <div class="priority" style="padding: 10px; display: flex; gap: 5px;">
             <div class="priority-label">Priority:</div>
-            <select id="viewPriority" required value="${viewPriority}">
+            <select id="viewPriority" required>
             <option value="Red">Red</option>
             <option value="Yellow">Yellow</option>
             <option value="Green">Green</option>
             </select>
         </div>
     </div>`;
-    events().saveEdits();
+    const red = document.querySelector('option[value="Red"]');
+    const yellow = document.querySelector('option[value="Yellow"]');
+    const green = document.querySelector('option[value="Green"]');
+    switch (viewPriority) {
+        case "Red":
+            red.setAttribute("selected", "");
+            break;
+        case "Yellow":
+            yellow.setAttribute("selected", "");
+            break;
+        case "Green":
+            green.setAttribute("selected", "");
+            break;
+        default:
+            break;
+    }
 }
