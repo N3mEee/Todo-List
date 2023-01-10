@@ -5,6 +5,7 @@
 ## In Progress:
 
 -   Style
+-   Code refactoring (last eventListeners.js 112)
 
 ## Done:
 

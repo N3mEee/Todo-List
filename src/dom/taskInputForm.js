@@ -1,4 +1,4 @@
-export default function taskInputForm(listsArray) {
+export default function taskInputForm(arrayLists) {
     const main = document.querySelector(".main");
 
     //Form
@@ -45,7 +45,7 @@ export default function taskInputForm(listsArray) {
     listName.required = true;
 
     //List Options
-    listsArray.forEach(function (element) {
+    arrayLists.forEach(function (element) {
         const option = document.createElement("option");
         option.value = element.listName;
         option.textContent = element.listName;

@@ -1,78 +1,78 @@
 import NewList from "./newList";
-import NewTask from "./newTask";
 import events from "../functions/eventListeners";
 import { isToday } from "date-fns";
 import createTaskElement from "../dom/createTaskElement";
+import { arrayLists } from "/src/index.js";
 
-export function updateTasks(listName, listArray) {
+export function updateTasksContainer(listName) {
     const container = document.querySelector(".container");
     container.innerHTML = "";
-    const title = document.querySelector(".title");
-    //title
-    title.textContent = listName;
 
-    //tasks
-    listArray.forEach((element) => {
-        if (listName === "Tasks") {
-            element.task.forEach((item) => {
-                createTaskElement(item);
-            });
-            document.querySelector(".delete-list-btn").style.display = "none";
-        } else if (listName === "My Day") {
-            element.task.forEach((item) => {
-                if (isToday(new Date(item.date.split("-").reverse().join(",")))) {
+    document.querySelector(".title").textContent = listName;
+
+    //create tasks cards
+    arrayLists.forEach((element) => {
+        switch (listName) {
+            case "Tasks":
+                element.tasks.forEach((item) => {
                     createTaskElement(item);
-                }
-            });
-            document.querySelector(".delete-list-btn").style.display = "none";
-        } else if (listName === element.name) {
-            element.task.forEach((item) => {
-                createTaskElement(item);
-            });
-            document.querySelector(".delete-list-btn").style.display = "block";
+                });
+                document.querySelector(".delete-list-btn").style.display = "none";
+                break;
+            case "My Day":
+                element.tasks.forEach((item) => {
+                    if (isToday(new Date(item.date.split("-").reverse().join(",")))) {
+                        createTaskElement(item);
+                    }
+                });
+                document.querySelector(".delete-list-btn").style.display = "none";
+                break;
+            case element.name:
+                element.tasks.forEach((item) => {
+                    createTaskElement(item);
+                });
+                document.querySelector(".delete-list-btn").style.display = "block";
+                break;
+            default:
+                break;
         }
     });
-    events().checkBox(listArray);
-    events().deleteTask(listArray);
-    events().deleteList(listArray);
-    events().viewTask(listArray);
+    events().checkBox();
+    events().deleteTask();
+    events().deleteList();
+    events().viewTask();
 }
 
-export function updateLists(listsArray) {
+export function updateSidebarLists() {
     const lists = document.querySelector(".lists");
     lists.innerHTML = "<hr>";
-
-    for (let i = 0; i < listsArray.length; i++) {
+    arrayLists.forEach((item) => {
         const list = document.createElement("div");
         list.classList.add("list");
-        list.textContent = listsArray[i].listName;
+        list.textContent = item.listName;
         lists.appendChild(list);
-    }
+    });
 }
 
-export function updateLocalStorage(listsArray) {
-    let x = JSON.stringify(listsArray);
+export function updateLocalStorage() {
+    const lists = JSON.stringify(arrayLists);
     localStorage.clear();
-    localStorage.setItem("list", x);
+    localStorage.setItem("list", lists);
 }
 
-export function getLocalStorage(listsArray) {
+export function getLocalStorage() {
     if (!localStorage.getItem("list")) {
-        return;
+        arrayLists.push(new NewList("Default"));
+        const today = new Date(Date.now());
+        arrayLists[0].addNewTask = ["Defalut task", false, today, "Default task description", "Green"];
+        updateLocalStorage();
     } else {
-        let x = JSON.parse(localStorage.getItem("list"));
-        for (let i = 0; i < x.length; i++) {
-            listsArray.push(new NewList(x[i].name));
-            x[i].task.forEach((element) => {
-                const dateArray = element.date.split("-");
-                const date = `${dateArray[2]}, ${dateArray[1]}, ${dateArray[0]}`;
-                listsArray[i].newTask = new NewTask(
-                    element.title,
-                    element.checked,
-                    date,
-                    element.description,
-                    element.priority
-                );
+        const lists = JSON.parse(localStorage.getItem("list"));
+        for (let i = 0; i < lists.length; i++) {
+            arrayLists.push(new NewList(lists[i].name));
+            lists[i].tasks.forEach((task) => {
+                const date = task.date.split("-").reverse();
+                arrayLists[i].addNewTask = [task.title, task.checked, date, task.description, task.priority];
             });
         }
     }

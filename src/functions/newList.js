@@ -1,18 +1,23 @@
+import NewTask from "./newTask";
+
 export default class NewList {
     constructor(name) {
         this.name = name;
     }
-    task = [];
+    tasks = [];
 
     get listName() {
         return this.name;
     }
 
     get tasks() {
-        return this.task;
+        return this.tasks;
     }
 
-    set newTask(task) {
-        this.task.push(task);
+    /**
+     * @param {any} task
+     */
+    set addNewTask(task) {
+        this.tasks.push(new NewTask(...task));
     }
 }
