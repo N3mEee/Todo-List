@@ -168,7 +168,7 @@ export default function events() {
                 const taskContainer = document.querySelector(".view-task-container");
                 const taskName = e.target.parentNode.querySelector(".task-title").textContent;
 
-                if (taskContainer !== null) functions.removeTaskContainer();
+                functions.removeTaskContainer();
 
                 arrayLists.forEach((list) => {
                     const filteredTasks = list.tasks.filter((task) => task.titleValue === taskName);
@@ -217,6 +217,12 @@ export default function events() {
 
         cancelViewTask.addEventListener("click", (e) => {
             functions.removeTaskContainer();
+        });
+
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") {
+                functions.removeTaskContainer();
+            }
         });
     }
 

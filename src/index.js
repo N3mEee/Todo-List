@@ -1,16 +1,17 @@
 import Content from "./dom/tasksDOM";
 import events from "./functions/eventListeners";
 import Sidebar from "./dom/sidebar";
-import { updateTasksContainer, updateSidebarLists, getLocalStorage } from "./functions/functions";
+import * as functions from "./functions/functions";
+
 import "./styles/style.css";
 
 export let arrayLists = [];
 
-getLocalStorage();
+functions.getLocalStorage();
 Sidebar();
-Content();
-updateTasksContainer("My Day");
-updateSidebarLists();
+functions.updateSidebarLists();
 events().sidebarLists();
 events().newList();
+Content();
+functions.updateTasksContainer("My Day");
 events().newTask();

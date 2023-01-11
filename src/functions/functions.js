@@ -81,7 +81,7 @@ export function getLocalStorage() {
 export function removeTaskContainer() {
     const main = document.querySelector(".main");
     const taskContainer = document.querySelector(".view-task-container");
-    main.removeChild(taskContainer);
+    if (taskContainer !== null) main.removeChild(taskContainer);
 }
 
 export function removePopout(node) {
