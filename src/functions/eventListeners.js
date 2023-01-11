@@ -20,7 +20,6 @@ export default function events() {
 
     // Create a new list
     function createNewList() {
-        const main = document.querySelector(".main");
         const form = document.querySelector(".new-list-form");
         const createNewListBtn = document.querySelector(".btn-new-list");
 
@@ -39,7 +38,7 @@ export default function events() {
                     arrayLists.push(new NewList(listName));
                     functions.updateSidebarLists();
                     functions.updateLocalStorage();
-                    main.removeChild(form);
+                    functions.removePopout(form);
                 }
             }
         });
@@ -48,12 +47,11 @@ export default function events() {
     // Close the new list form
     function closeListFormEvent() {
         const btn = document.querySelector(".btn-close-list-form");
-        const main = document.querySelector(".main");
         const listform = document.querySelector(".new-list-form");
 
         btn.addEventListener("click", (e) => {
             e.preventDefault();
-            main.removeChild(listform);
+            functions.removePopout(listform);
         });
     }
 
@@ -70,7 +68,6 @@ export default function events() {
 
     // Create a new task
     function createNewTask() {
-        const main = document.querySelector(".main");
         const form = document.querySelector(".new-task-form");
         const taskName = document.querySelector("input[id=task-name]");
         const description = document.querySelector("textarea[id=description]");
@@ -90,7 +87,7 @@ export default function events() {
                         element.addNewTask = [taskName.value, false, date.value, description.value, priority.value];
                     }
                 });
-                main.removeChild(form);
+                functions.removePopout(form);
                 functions.updateLocalStorage();
                 functions.updateTasksContainer(listName.value);
             }
@@ -100,29 +97,23 @@ export default function events() {
     // Close new task form
     function closeTaskFormEvent() {
         const btn = document.querySelector(".btn-close-task-form");
-        const main = document.querySelector(".main");
         const taskForm = document.querySelector(".new-task-form");
 
         btn.addEventListener("click", (e) => {
             e.preventDefault();
-            main.removeChild(taskForm);
+            functions.removePopout(taskForm);
         });
     }
 
     //Checkbox
     function checkBox() {
-        const tasks = document.querySelectorAll(".task");
-
-        tasks.forEach((taskItem) => {
-            taskItem.children[0].addEventListener("change", (e) => {
+        const checkboxes = document.querySelectorAll("input[type=checkbox]");
+        checkboxes.forEach((checkbox) => {
+            checkbox.addEventListener("change", (e) => {
                 arrayLists.forEach((list) => {
                     list.tasks.forEach((task) => {
-                        if (e.target.parentNode.children[1].textContent === task.titleValue) {
-                            if (e.target.checked) {
-                                task.setChecked = true;
-                            } else {
-                                task.setChecked = false;
-                            }
+                        if (e.target.parentNode.querySelector(".task-title").textContent === task.titleValue) {
+                            e.target.checked ? (task.setChecked = true) : (task.setChecked = false);
                             functions.updateLocalStorage();
                         }
                     });
@@ -133,15 +124,14 @@ export default function events() {
 
     //deleteTask
     function deleteTask() {
-        const tasks = document.querySelectorAll(".task");
-        tasks.forEach((taskItem) => {
-            const deleteTaskBtn = taskItem.querySelector(".delete-task-btn");
-            const listName = document.querySelector(".title").textContent;
+        const deleteTaskBtns = document.querySelectorAll(".delete-task-btn");
+        const listName = document.querySelector(".title").textContent;
 
+        deleteTaskBtns.forEach((deleteTaskBtn) => {
             deleteTaskBtn.addEventListener("click", (e) => {
                 arrayLists.forEach((list) => {
                     list.tasks.forEach((task) => {
-                        if (task.titleValue === e.target.parentNode.children[1].textContent) {
+                        if (e.target.parentNode.querySelector(".task-title").textContent === task.titleValue) {
                             list.tasks.splice(list.tasks.indexOf(task), 1);
                             functions.updateLocalStorage();
                             functions.updateTasksContainer(listName);
@@ -171,41 +161,28 @@ export default function events() {
 
     //viewTask
     function viewTask() {
-        const viewTaskBtn = document.querySelectorAll(".view-task-btn");
+        const viewTaskBtns = document.querySelectorAll(".view-task-btn");
 
-        viewTaskBtn.forEach((task) => {
-            task.addEventListener("click", (e) => {
-                const main = document.querySelector(".main");
+        viewTaskBtns.forEach((viewTaskBtn) => {
+            viewTaskBtn.addEventListener("click", (e) => {
                 const taskContainer = document.querySelector(".view-task-container");
-                if (taskContainer !== null) {
-                    main.removeChild(taskContainer);
-                }
-                const taskName = e.target.parentNode.children[1].textContent;
-                arrayLists.forEach((lists) => {
-                    let indexOfList;
-                    const list = lists.tasks.filter((task) => {
-                        if (task.titleValue === taskName) {
-                            indexOfList = arrayLists.indexOf(lists);
-                            return true;
-                        }
-                        return false;
-                    });
-                    if (list.length > 0) {
-                        const lista = arrayLists[indexOfList];
-                        const task = lista.tasks.filter((task) => {
-                            return task.titleValue === taskName;
-                        });
+                const taskName = e.target.parentNode.querySelector(".task-title").textContent;
+
+                if (taskContainer !== null) functions.removeTaskContainer();
+
+                arrayLists.forEach((list) => {
+                    const filteredTasks = list.tasks.filter((task) => task.titleValue === taskName);
+                    if (filteredTasks.length > 0) {
                         taskView(
-                            task[0].title,
-                            task[0].checked,
-                            task[0].description,
-                            task[0].date,
-                            lista.name,
-                            task[0].priority
+                            filteredTasks[0].title,
+                            filteredTasks[0].checked,
+                            filteredTasks[0].description,
+                            filteredTasks[0].date,
+                            list.listName,
+                            filteredTasks[0].priority
                         );
                         cancelViewTask();
-                        const indexOfTask = lista.tasks.indexOf(task[0]);
-                        saveEdits(indexOfList, indexOfTask);
+                        saveEdits(arrayLists.indexOf(list), list.tasks.indexOf(filteredTasks[0]));
                     }
                 });
             });
@@ -230,21 +207,16 @@ export default function events() {
 
             functions.updateLocalStorage();
             functions.updateTasksContainer(arrayLists[indexOfList].name);
-
-            const main = document.querySelector(".main");
-            const taskContainer = document.querySelector(".view-task-container");
-            main.removeChild(taskContainer);
+            functions.removeTaskContainer();
         });
     }
 
     //cancel view Task
     function cancelViewTask() {
-        const main = document.querySelector(".main");
         const cancelViewTask = document.querySelector(".cancel-view-task-btn");
-        const taskContainer = document.querySelector(".view-task-container");
 
         cancelViewTask.addEventListener("click", (e) => {
-            main.removeChild(taskContainer);
+            functions.removeTaskContainer();
         });
     }
 
