@@ -10,108 +10,27 @@ body {
     grid-template-columns: 1fr 5fr;
 }
 
-.sidebar {
-    width: 100%;
-    height: 100%;
-    background-color: whitesmoke;
-    display: grid;
-    grid-template-rows: auto auto 1fr auto;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.logo p {
-    font-size: 24px;
-    font-weight: 900;
-}
-
-.nav {
-    display: flex;
-    justify-content: space-evenly;
-}
-
-.lists {
+/* newlistform */
+.main .new-list-form {
+    padding: 20px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    background-color: lightcoral;
+    width: max-content;
+    height: max-content;
     display: flex;
     flex-direction: column;
-    align-items: center;
+}
+/* newlistform */
+.main .new-list-form input {
+    margin: 10px 0;
 }
 
-.lists hr {
-    width: 100%;
-}
-
-.list {
-    cursor: pointer;
-    padding: 2px;
-}
-
-.list:hover {
-    background-color: white;
-    border-radius: 8px;
-}
-
-.new-list {
-    display: flex;
-    border: 1px solid lightblue;
-    padding: 20px;
-    gap: 10px;
-    justify-content: flex-start;
-    align-items: center;
-    background-color: lightcyan;
-    cursor: pointer;
-}
-
-.new-list:hover {
-    background-color: lightblue;
-}
-
-.new-list .new-list-button {
-    font-weight: 600;
-}
-
-.main {
-    padding: 0 40px;
-    width: calc(100% - 80px);
-    height: 100%;
-    display: grid;
-    grid-template-rows: auto auto 1fr;
-}
-
-.view-task-header {
-    display: flex;
-    justify-content: space-between;
-    box-shadow: 0 2px 1px -1px white;
-    padding-bottom: 15px;
-}
-
-.cancel-view-task-btn {
-    align-self: flex-end;
-    width: 40px;
-    height: 40px;
-    cursor: pointer;
-    border-radius: 50px;
-    background-color: whitesmoke;
-    border: 1px solid lightblue;
-}
-.cancel-view-task-btn:hover {
-    background-color: lightblue;
-}
-
-.view-task-header-title {
-    display: flex;
-    gap: 5px;
-}
-
-.main .container-title {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-}
-
+/* newtaskform */
 .main .new-task-form {
     padding: 20px;
     position: absolute;
@@ -131,75 +50,7 @@ body {
     margin: 10px 0;
 }
 
-.btn-primary {
-    border-radius: 10px;
-    cursor: pointer;
-    margin: 10px;
-    padding: 10px;
-    background-color: lightblue;
-}
-
-.btn-primary:hover {
-    background-color: rgb(144, 204, 224);
-}
-
-.main .title {
-    font-size: 48px;
-    font-weight: 900;
-    padding-bottom: 20px;
-}
-
-.main .new-task {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50px;
-    padding: 10px;
-    margin: 20px 20px 0 0;
-    cursor: pointer;
-    width: 40px;
-    height: 40px;
-    text-align: center;
-    background-color: whitesmoke;
-    justify-self: end;
-    border: 1px solid lightblue;
-}
-
-.main .new-task:hover {
-    background-color: lightblue;
-}
-
-.main .new-task img {
-    width: 20px;
-    height: 20px;
-}
-.main .container {
-    width: 100%;
-    height: 100%;
-    display: grid;
-    grid-template-rows: repeat(auto-fit, minmax(min-content, 40px));
-    align-items: stretch;
-    gap: 5px;
-}
-
-.main .container .task {
-    padding-right: 10px;
-    display: grid;
-    grid-template-columns: 1fr 1fr auto 5fr 1fr auto auto;
-    gap: 10px;
-    justify-items: start;
-    align-items: center;
-    border: 1px solid gray;
-    border-radius: 10px;
-}
-.main .container .task .input {
-    justify-self: center;
-}
-.main .container .task input[type="checkbox"] {
-    width: 50%;
-    height: 50%;
-}
-
+/* vewtaskpopout */
 .main .view-task-container {
     position: absolute;
     margin: auto;
@@ -213,25 +64,47 @@ body {
     flex-direction: column;
     background-color: lightcoral;
 }
-.task-view-content {
+
+.main .view-task-container .view-task-header {
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 2px 1px -1px white;
+    padding-bottom: 15px;
+}
+
+.main .view-task-container .view-task-header .view-task-header-title {
+    display: flex;
+    gap: 5px;
+}
+
+.main .view-task-container .view-task-header .cancel-view-task-btn {
+    align-self: flex-end;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    border-radius: 50px;
+    background-color: whitesmoke;
+    border: 1px solid lightblue;
+}
+
+.main .view-task-container .view-task-header .cancel-view-task-btn:hover {
+    background-color: lightblue;
+}
+
+.main .view-task-container .task-view-content {
     display: flex;
     justify-content: space-between;
 }
-.main .new-list-form {
-    padding: 20px;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    margin: auto;
-    background-color: lightcoral;
-    width: max-content;
-    height: max-content;
-    display: flex;
-    flex-direction: column;
+
+/* global use */
+.btn-primary {
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 10px;
+    padding: 10px;
+    background-color: lightblue;
 }
 
-.main .new-list-form input {
-    margin: 10px 0;
+.btn-primary:hover {
+    background-color: rgb(144, 204, 224);
 }

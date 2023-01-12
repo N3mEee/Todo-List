@@ -1,4 +1,5 @@
 import PlusImage from "/src/assets/plus.svg";
+import "/src/styles/sidebar.css";
 
 export default function sidebar() {
     //sidebar navigation

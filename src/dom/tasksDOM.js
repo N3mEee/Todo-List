@@ -1,4 +1,5 @@
 import PlusImage from "/src/assets/plus.svg";
+import "/src/styles/main.css";
 
 export default function content() {
     const content = document.querySelector("#content");
