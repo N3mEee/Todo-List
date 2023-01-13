@@ -47,10 +47,18 @@ export function updateSidebarLists() {
     const lists = document.querySelector(".lists");
     lists.innerHTML = "<hr>";
     arrayLists.forEach((item) => {
+        const listContainer = document.createElement("div");
+        listContainer.className = "list list-container";
+        lists.appendChild(listContainer);
+
+        const listIcon = document.createElement("i");
+        listIcon.className = "fa-solid fa-list";
+        listContainer.appendChild(listIcon);
+
         const list = document.createElement("div");
-        list.classList.add("list");
+        // list.classList.add("list");
         list.textContent = item.listName;
-        lists.appendChild(list);
+        listContainer.appendChild(list);
     });
 }
 

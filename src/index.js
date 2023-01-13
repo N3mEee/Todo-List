@@ -2,7 +2,6 @@ import Content from "./dom/tasksDOM";
 import events from "./functions/eventListeners";
 import Sidebar from "./dom/sidebar";
 import * as functions from "./functions/functions";
-
 import "./styles/style.css";
 
 export let arrayLists = [];

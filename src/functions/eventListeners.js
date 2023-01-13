@@ -40,6 +40,7 @@ export default function events() {
                     functions.updateLocalStorage();
                     functions.removePopout(form);
                 }
+                sidebarLists();
             }
         });
     }
@@ -154,6 +155,7 @@ export default function events() {
                     functions.updateLocalStorage();
                     functions.updateTasksContainer("My Day");
                     functions.updateSidebarLists();
+                    sidebarLists();
                 }
             });
         });
@@ -208,6 +210,7 @@ export default function events() {
             functions.updateLocalStorage();
             functions.updateTasksContainer(arrayLists[indexOfList].name);
             functions.removeTaskContainer();
+            sidebarLists();
         });
     }
 
@@ -228,12 +231,23 @@ export default function events() {
 
     //Sidebar lists buttons
     function sidebarLists() {
-        const sidebar = document.querySelector(".sidebar");
+        const lists = document.querySelectorAll(".list");
+        const myDayCard = document.querySelector(".my-day-card");
+        const allTasksCard = document.querySelector(".all-tasks-card");
 
-        sidebar.addEventListener("click", function (e) {
-            if (e.target.classList.contains("list")) {
-                functions.updateTasksContainer(e.target.textContent);
-            }
+        lists.forEach((list) => {
+            list.addEventListener("click", function (e) {
+                e.target.className.includes("list")
+                    ? functions.updateTasksContainer(e.target.textContent)
+                    : functions.updateTasksContainer(e.target.parentNode.children[1].textContent);
+            });
+        });
+
+        myDayCard.addEventListener("click", function (e) {
+            functions.updateTasksContainer("My Day");
+        });
+        allTasksCard.addEventListener("click", function (e) {
+            functions.updateTasksContainer("Tasks");
         });
     }
 
