@@ -24,7 +24,7 @@ export default function events() {
         const createNewListBtn = document.querySelector(".btn-new-list");
 
         createNewListBtn.addEventListener("click", (e) => {
-            let isFormValid = form.checkValidity();
+            const isFormValid = form.checkValidity();
             if (!isFormValid) {
                 form.reportValidity();
             } else {
@@ -77,7 +77,7 @@ export default function events() {
         const createNewTaskBtn = document.querySelector(".btn-new-task");
 
         createNewTaskBtn.addEventListener("click", (e) => {
-            let isFormValid = form.checkValidity();
+            const isFormValid = form.checkValidity();
             if (!isFormValid) {
                 form.reportValidity();
             } else {
