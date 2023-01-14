@@ -95,29 +95,41 @@
 }
 
 .main .view-task-container .view-task-header {
+    padding: 20px;
     display: flex;
     justify-content: space-between;
-    box-shadow: 0 2px 1px -1px white;
-    padding-bottom: 15px;
+    box-shadow: 0 2px 1px -1px var(--title);
 }
 
 .main .view-task-container .view-task-header .view-task-header-title {
     display: flex;
+    align-items: center;
+    justify-content: center;
     gap: 5px;
 }
 
-.main .view-task-container .view-task-header .cancel-view-task-btn {
+.main .view-task-container .view-task-header .view-task-header-title .list-name {
+    background-color: rgba(255, 0, 0, 0.231);
+    padding: 5px;
+    border-radius: 20px;
+}
+
+.main .view-task-container .view-task-header .view-task-exit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     align-self: flex-end;
     width: 40px;
     height: 40px;
     cursor: pointer;
+    background-color: var(--title);
     border-radius: 50px;
-    background-color: whitesmoke;
-    border: 1px solid lightblue;
+    color: white;
 }
 
-.main .view-task-container .view-task-header .cancel-view-task-btn:hover {
-    background-color: lightblue;
+.main .view-task-container .view-task-header .view-task-exit:hover {
+    background-color: white;
+    color: var(--title);
 }
 
 .main .view-task-container .task-view-content {

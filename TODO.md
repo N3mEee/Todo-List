@@ -7,6 +7,8 @@
 
 # Bugs:
 
+-   clicking on the sidebar>list>icon sometimes doesn't work
+
 # TODO:
 
 -   Style

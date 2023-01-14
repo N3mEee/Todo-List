@@ -15,7 +15,7 @@ export default function sidebar() {
 
     const logoText = document.createElement("a");
     logoText.setAttribute("href", "#");
-    logoText.innerHTML = `TODO List App`;
+    logoText.innerHTML = `TODO List`;
     logo.appendChild(logoText);
 
     //navigation
@@ -76,7 +76,7 @@ export default function sidebar() {
     const line = document.createElement("hr");
     lists.appendChild(line);
 
-    //New List
+    //New List btn
     const newList = document.createElement("div");
     newList.className = "new-list";
     sidebar.appendChild(newList);
@@ -86,15 +86,8 @@ export default function sidebar() {
     newListIcon.className = "fa-solid fa-plus";
     newList.appendChild(newListIcon);
 
-    //New List button
-    // const img = new Image();
-    // img.src = PlusImage;
-    // newList.appendChild(img);
-    // img.style.width = "20px";
-    // img.style.height = "20px";
-
     const newListBtn = document.createElement("div");
     newListBtn.className = "new-list-button";
-    newListBtn.textContent = "New List";
+    newListBtn.textContent = "Add List";
     newList.appendChild(newListBtn);
 }
