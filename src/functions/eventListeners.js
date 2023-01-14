@@ -216,8 +216,7 @@ export default function events() {
 
     //cancel view Task
     function cancelViewTask() {
-        const cancelViewTask = document.querySelector(".cancel-view-task-btn");
-
+        const cancelViewTask = document.querySelector(".view-task-exit");
         cancelViewTask.addEventListener("click", (e) => {
             functions.removeTaskContainer();
         });
@@ -237,9 +236,9 @@ export default function events() {
 
         lists.forEach((list) => {
             list.addEventListener("click", function (e) {
-                e.target.className.includes("list")
-                    ? functions.updateTasksContainer(e.target.textContent)
-                    : functions.updateTasksContainer(e.target.parentNode.children[1].textContent);
+                !e.target.classList.contains("list")
+                    ? functions.updateTasksContainer(e.target.parentNode.children[1].textContent)
+                    : functions.updateTasksContainer(e.target.textContent);
             });
         });
 
