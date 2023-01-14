@@ -27,12 +27,14 @@ export default function content() {
     title.setAttribute("class", "title");
     containerTitle.appendChild(title);
 
-    const deleteListBtn = document.createElement("button");
+    const deleteListBtn = document.createElement("div");
     deleteListBtn.setAttribute("class", "delete-list-btn");
     deleteListBtn.style.display = "none";
-
-    deleteListBtn.textContent = "Delete";
     containerTitle.appendChild(deleteListBtn);
+
+    const deleteListIcon = document.createElement("i");
+    deleteListIcon.className = "fa-solid fa-trash";
+    deleteListBtn.appendChild(deleteListIcon);
 
     //Create content container
     const container = document.createElement("div");

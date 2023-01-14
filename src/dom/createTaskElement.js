@@ -20,23 +20,35 @@ export default function createTaskElement(item) {
     date.textContent = item.dateValue;
     task.appendChild(date);
 
-    const description = document.createElement("div");
-    description.classList.add("task-description");
-    description.textContent = item.description.slice(0, 50) + "...";
-    task.appendChild(description);
-
     const priority = document.createElement("div");
     priority.classList.add("task-priority");
     priority.textContent = item.priority;
     task.appendChild(priority);
 
-    const viewTask = document.createElement("button");
+    //view
+    const viewTask = document.createElement("div");
     viewTask.classList.add("view-task-btn");
-    viewTask.textContent = "View";
     task.appendChild(viewTask);
 
-    const deleteTaskBtn = document.createElement("button");
+    const viewTaskIcon = document.createElement("i");
+    viewTaskIcon.className = "fa-solid fa-eye";
+    viewTask.appendChild(viewTaskIcon);
+
+    //edit
+    const editTask = document.createElement("div");
+    editTask.classList.add("view-task-btn");
+    task.appendChild(editTask);
+
+    const editTaskIcon = document.createElement("i");
+    editTaskIcon.className = "fa-solid fa-pen-to-square";
+    editTask.appendChild(editTaskIcon);
+
+    //delete
+    const deleteTaskBtn = document.createElement("div");
     deleteTaskBtn.classList.add("delete-task-btn");
-    deleteTaskBtn.textContent = "Delete";
     task.appendChild(deleteTaskBtn);
+
+    const deleteTaskIcon = document.createElement("i");
+    deleteTaskIcon.className = "fa-solid fa-trash";
+    deleteTaskBtn.appendChild(deleteTaskIcon);
 }
