@@ -1,4 +1,3 @@
-import PlusImage from "/src/assets/plus.svg";
 import "/src/styles/main.css";
 
 export default function content() {
@@ -13,9 +12,10 @@ export default function content() {
     newTaskBtn.setAttribute("class", "new-task");
     main.appendChild(newTaskBtn);
 
-    const img = new Image();
-    img.src = PlusImage;
-    newTaskBtn.appendChild(img);
+    // New List Icon
+    const newTaskIcon = document.createElement("i");
+    newTaskIcon.className = "fa-solid fa-plus";
+    newTaskBtn.appendChild(newTaskIcon);
 
     // Title/deleteBtn container
     const containerTitle = document.createElement("div");

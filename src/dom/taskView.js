@@ -1,6 +1,3 @@
-import exitImage from "/src/assets/exit.svg";
-import projectImage from "/src/assets/project.svg";
-
 export default function taskView(viewName, viewChecked, viewDescription, viewDate, viewListName, viewPriority) {
     const main = document.querySelector(".main");
 
@@ -20,8 +17,8 @@ export default function taskView(viewName, viewChecked, viewDescription, viewDat
     taskViewHeader.appendChild(headerTitle);
 
     //icon
-    const projectIcon = new Image();
-    projectIcon.src = projectImage;
+    const projectIcon = document.createElement("i");
+    projectIcon.className = "fa-regular fa-rectangle-list";
     headerTitle.appendChild(projectIcon);
 
     const listName = document.createElement("p");
@@ -30,10 +27,13 @@ export default function taskView(viewName, viewChecked, viewDescription, viewDat
     headerTitle.appendChild(listName);
 
     // exit
-    const img = new Image();
-    img.src = exitImage;
-    img.classList.add("cancel-view-task-btn");
-    taskViewHeader.appendChild(img);
+    const viewTaskExit = document.createElement("div");
+    viewTaskExit.className = "view-task-exit";
+    taskViewHeader.appendChild(viewTaskExit);
+    // exit icon
+    const exit = document.createElement("i");
+    exit.className = "fa-solid fa-xmark";
+    viewTaskExit.appendChild(exit);
 
     const taskViewContent = document.createElement("div");
     taskViewContent.classList.add("task-view-content");

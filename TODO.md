@@ -9,9 +9,8 @@
 
 # TODO:
 
--   when poput is called everything behind it should be blurred
 -   Style
--   remove svg files and use font awesome
+    -   when poput is called everything behind it should be blurred
 
 # Notes:
 

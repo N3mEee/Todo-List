@@ -1,4 +1,3 @@
-import PlusImage from "/src/assets/plus.svg";
 import "/src/styles/sidebar.css";
 import "@fortawesome/fontawesome-free/js/all.js";
 
@@ -81,7 +80,11 @@ export default function sidebar() {
     const newList = document.createElement("div");
     newList.className = "new-list";
     sidebar.appendChild(newList);
-    newList.innerHTML = `<i class="fa-solid fa-plus"></i>`;
+
+    // New List Icon
+    const newListIcon = document.createElement("i");
+    newListIcon.className = "fa-solid fa-plus";
+    newList.appendChild(newListIcon);
 
     //New List button
     // const img = new Image();
