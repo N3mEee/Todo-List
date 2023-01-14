@@ -18,6 +18,6 @@ export default class NewList {
      * @param {any} task
      */
     set addNewTask(task) {
-        this.tasks.push(new NewTask(...task));
+        this.tasks.push(new NewTask(...task, this.name));
     }
 }
