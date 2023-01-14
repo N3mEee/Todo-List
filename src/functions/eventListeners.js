@@ -167,7 +167,6 @@ export default function events() {
 
         viewTaskBtns.forEach((viewTaskBtn) => {
             viewTaskBtn.addEventListener("click", (e) => {
-                const taskContainer = document.querySelector(".view-task-container");
                 const taskName = e.target.parentNode.querySelector(".task-title").textContent;
 
                 functions.removeTaskContainer();
