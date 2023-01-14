@@ -35,10 +35,12 @@
 }
 
 .main .container-title {
+    margin-bottom: 10px;
     color: var(--title);
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    border-bottom: 2px solid var(--neutral-300);
 }
 
 .main .container-title .title {
@@ -68,9 +70,60 @@
 }
 
 .main .container .task {
-    padding-right: 10px;
-    gap: 10px;
-    border: 1px solid gray;
-    border-radius: 10px;
+    border-bottom: 1px solid var(--neutral-300);
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5px;
+}
+
+.main .container .task .task-details {
+    display: grid;
+    grid-template-columns: auto auto 1fr;
+    grid-template-rows: 1fr auto;
+    align-items: baseline;
+    gap: 10px;
+}
+
+.main .container .task .task-details input {
+    width: 20px;
+    height: 20px;
+    grid-row: 1 / -1;
+}
+
+.main .container .task .task-details .details-container {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-content: center;
+}
+
+.main .container .task .task-details .task-title {
+    grid-column: 2 / -1;
+    font-size: 1.4rem;
+    line-height: 0;
+    color: var(--neutral-700);
+}
+.main .container .task .task-details .task-date {
+    background-color: var(--blue-400);
+    border-radius: 20px;
+    padding: 0 4px;
+    margin: 8px 0;
+    max-width: max-content;
+    color: white;
+    font-size: 0.8rem;
+}
+.main .container .task .task-details .task-priority {
+    background-color: red;
+    max-width: max-content;
+    border-radius: 20px;
+    padding: 0 4px;
+    margin: 8px 0;
+    color: white;
+    font-size: 0.8rem;
+}
+
+.main .container .task .task-icons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
