@@ -39,15 +39,21 @@
     grid-template-columns: 1fr 3fr;
 }
 
-/* newlistform */
-.main .new-list-form {
-    padding: 20px;
+.new-list-form-container {
     position: absolute;
     left: 0;
     right: 0;
     top: 0;
     bottom: 0;
-    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+}
+
+/* newlistform */
+.main .new-list-form {
+    padding: 20px;
     background-color: lightcoral;
     width: max-content;
     height: max-content;
@@ -59,15 +65,21 @@
     margin: 10px 0;
 }
 
+.new-task-form-container {
+    position: absolute;
+    right: 0;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+}
+
 /* newtaskform */
 .main .new-task-form {
     padding: 20px;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    margin: auto;
     background-color: lightcoral;
     width: max-content;
     height: max-content;
@@ -82,15 +94,23 @@
 /* vewtaskpopout */
 .main .view-task-container {
     position: absolute;
-    margin: auto;
     left: 0;
     right: 0;
     top: 0;
     bottom: 0;
-    width: 50%;
-    height: 50%;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+}
+
+.main .view-task-container .view-task-card {
     display: flex;
     flex-direction: column;
+    width: 50%;
+    height: 50%;
     background-color: lightcoral;
 }
 

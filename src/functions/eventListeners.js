@@ -21,6 +21,7 @@ export default function events() {
     // Create a new list
     function createNewList() {
         const form = document.querySelector(".new-list-form");
+        const formContainer = document.querySelector(".new-list-form-container");
         const createNewListBtn = document.querySelector(".btn-new-list");
 
         createNewListBtn.addEventListener("click", (e) => {
@@ -38,7 +39,7 @@ export default function events() {
                     arrayLists.push(new NewList(listName));
                     functions.updateSidebarLists();
                     functions.updateLocalStorage();
-                    functions.removePopout(form);
+                    functions.removePopout(formContainer);
                 }
                 sidebarLists();
             }
@@ -48,11 +49,11 @@ export default function events() {
     // Close the new list form
     function closeListFormEvent() {
         const btn = document.querySelector(".btn-close-list-form");
-        const listform = document.querySelector(".new-list-form");
+        const listFormContainer = document.querySelector(".new-list-form-container");
 
         btn.addEventListener("click", (e) => {
             e.preventDefault();
-            functions.removePopout(listform);
+            functions.removePopout(listFormContainer);
         });
     }
 
@@ -70,6 +71,7 @@ export default function events() {
     // Create a new task
     function createNewTask() {
         const form = document.querySelector(".new-task-form");
+        const formContainer = document.querySelector(".new-task-form-container");
         const taskName = document.querySelector("input[id=task-name]");
         const description = document.querySelector("textarea[id=description]");
         const date = document.querySelector("input[id=date]");
@@ -88,7 +90,7 @@ export default function events() {
                         element.addNewTask = [taskName.value, false, date.value, description.value, priority.value];
                     }
                 });
-                functions.removePopout(form);
+                functions.removePopout(formContainer);
                 functions.updateLocalStorage();
                 functions.updateTasksContainer(listName.value);
             }
@@ -98,11 +100,11 @@ export default function events() {
     // Close new task form
     function closeTaskFormEvent() {
         const btn = document.querySelector(".btn-close-task-form");
-        const taskForm = document.querySelector(".new-task-form");
+        const formContainer = document.querySelector(".new-task-form-container");
 
         btn.addEventListener("click", (e) => {
             e.preventDefault();
-            functions.removePopout(taskForm);
+            functions.removePopout(formContainer);
         });
     }
 

@@ -6,10 +6,15 @@ export default function taskView(viewName, viewChecked, viewDescription, viewDat
     taskContainer.classList.add("view-task-container");
     main.appendChild(taskContainer);
 
+    //card
+    const viewTaskCard = document.createElement("div");
+    viewTaskCard.className = "view-task-card";
+    taskContainer.appendChild(viewTaskCard);
+
     //header
     const taskViewHeader = document.createElement("div");
     taskViewHeader.classList.add("view-task-header");
-    taskContainer.appendChild(taskViewHeader);
+    viewTaskCard.appendChild(taskViewHeader);
 
     //header title
     const headerTitle = document.createElement("div");
@@ -37,7 +42,7 @@ export default function taskView(viewName, viewChecked, viewDescription, viewDat
 
     const taskViewContent = document.createElement("div");
     taskViewContent.classList.add("task-view-content");
-    taskContainer.appendChild(taskViewContent);
+    viewTaskCard.appendChild(taskViewContent);
     taskViewContent.innerHTML = `
     <div class="left" style="display: flex; gap: 5px; flex-direction: column;">
         <div class="title-container" style="padding: 10px; display: flex; gap: 5px;">

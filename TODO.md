@@ -13,7 +13,6 @@
 # TODO:
 
 -   Style
-    -   when poput is called everything behind it should be blurred
 
 # Notes:
 

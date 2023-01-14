@@ -1,10 +1,15 @@
 export default function listInputForm() {
     const main = document.querySelector(".main");
 
+    // formContainer
+    const formContainer = document.createElement("div");
+    formContainer.className = "new-list-form-container";
+    main.appendChild(formContainer);
+
     //Form
     const form = document.createElement("form");
     form.classList.add("new-list-form");
-    main.appendChild(form);
+    formContainer.appendChild(form);
 
     //List Name
     const listNameLabel = document.createElement("label");

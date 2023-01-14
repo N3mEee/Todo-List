@@ -1,10 +1,15 @@
 export default function taskInputForm(arrayLists) {
     const main = document.querySelector(".main");
 
+    // formContainer
+    const formContainer = document.createElement("div");
+    formContainer.className = "new-task-form-container";
+    main.appendChild(formContainer);
+
     //Form
     const form = document.createElement("form");
     form.classList.add("new-task-form");
-    main.appendChild(form);
+    formContainer.appendChild(form);
 
     //Task Name
     const taskNameLabel = document.createElement("label");
