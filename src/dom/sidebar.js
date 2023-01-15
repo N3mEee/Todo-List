@@ -12,10 +12,14 @@ export default function sidebar() {
     const logo = document.createElement("div");
     logo.className = "logo";
     sidebar.appendChild(logo);
+    
+    const logoIcon = document.createElement("i");
+    logoIcon.className = "fa-solid fa-clipboard-list";
+    logo.appendChild(logoIcon);
 
     const logoText = document.createElement("a");
     logoText.setAttribute("href", "#");
-    logoText.innerHTML = `TODO List`;
+    logoText.innerHTML = `To Do List`;
     logo.appendChild(logoText);
 
     //navigation
