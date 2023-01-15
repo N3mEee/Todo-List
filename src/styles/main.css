@@ -125,5 +125,8 @@
 .main .container .task .task-icons {
     display: flex;
     align-items: center;
-    gap: 10px;
+}
+
+.main .container .task .task-icons > *{
+padding: 10px;
 }

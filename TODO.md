@@ -14,6 +14,7 @@
 # TODO:
 
 -   Style
+-   Fix event listeners for taks view, edit and delete
 
 # Notes:
 

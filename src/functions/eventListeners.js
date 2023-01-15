@@ -134,7 +134,7 @@ export default function events() {
             deleteTaskBtn.addEventListener("click", (e) => {
                 arrayLists.forEach((list) => {
                     list.tasks.forEach((task) => {
-                        if (e.target.parentNode.querySelector(".task-title").textContent === task.titleValue) {
+                        if (e.target.parentNode.parentNode.parentNode.parentNode.querySelector(".task-title").textContent === task.titleValue) {
                             list.tasks.splice(list.tasks.indexOf(task), 1);
                             functions.updateLocalStorage();
                             functions.updateTasksContainer(listName);
@@ -169,7 +169,7 @@ export default function events() {
 
         viewTaskBtns.forEach((viewTaskBtn) => {
             viewTaskBtn.addEventListener("click", (e) => {
-                const taskName = e.target.parentNode.querySelector(".task-title").textContent;
+                const taskName = e.target.parentNode.parentNode.parentNode.parentNode.querySelector(".task-title").textContent;
 
                 functions.removeTaskContainer();
 
