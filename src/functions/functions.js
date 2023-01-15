@@ -1,6 +1,6 @@
 import NewList from "./newList";
 import events from "../functions/eventListeners";
-import { isToday } from "date-fns";
+import { addDays, isToday } from "date-fns";
 import createTaskElement from "../dom/createTaskElement";
 import { arrayLists } from "/src/index.js";
 
@@ -75,9 +75,24 @@ export function updateLocalStorage() {
 
 export function getLocalStorage() {
     if (!localStorage.getItem("list")) {
-        arrayLists.push(new NewList("Default"));
         const today = new Date(Date.now());
+        arrayLists.push(new NewList("Default"));
         arrayLists[0].addNewTask = ["Defalut task", false, today, "Default task description", "Green"];
+        arrayLists.push(new NewList("Grocery"));
+        arrayLists[1].addNewTask = ["Bakery and Bread", false, today, "Bakery and Bread description", "Yellow"];
+        arrayLists[1].addNewTask = ["Pasta and Rice", false, addDays(today, 5), "Pasta and Rice description", "Green"];
+        arrayLists[1].addNewTask = [
+            "Meat and Seafood",
+            false,
+            addDays(today, 1),
+            "Meat and Seafood description",
+            "Red",
+        ];
+        arrayLists.push(new NewList("Personal"));
+        arrayLists[2].addNewTask = ["Study Time", false, today, "Study Time description", "Yellow"];
+        arrayLists.push(new NewList("Reminders"));
+        arrayLists[3].addNewTask = ["Work Meeting", false, today, "Work Meeting description", "Red"];
+        arrayLists[3].addNewTask = ["Event", false, addDays(today, 3), "Event description", "Green"];
         updateLocalStorage();
     } else {
         const lists = JSON.parse(localStorage.getItem("list"));
