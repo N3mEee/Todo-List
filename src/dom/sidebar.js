@@ -36,7 +36,6 @@ export default function sidebar() {
 
     //myDay number
     const myDaynumber = document.createElement("span");
-    myDaynumber.textContent = "123";
     myDayCard.appendChild(myDaynumber);
 
     //TODO: remove hardcoded values
@@ -59,7 +58,6 @@ export default function sidebar() {
     //TODO: remove hardcoded values
     //alTasksnumber
     const alTasksnumber = document.createElement("span");
-    alTasksnumber.textContent = "123";
     allTasksCard.appendChild(alTasksnumber);
 
     //alTasks

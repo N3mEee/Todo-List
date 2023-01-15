@@ -8,6 +8,7 @@ export let arrayLists = [];
 
 functions.getLocalStorage();
 Sidebar();
+functions.updateSidebarNav();
 functions.updateSidebarLists();
 events().sidebarLists();
 events().newList();
