@@ -1,95 +1,59 @@
 import "/src/styles/sidebar.css";
 import "@fortawesome/fontawesome-free/js/all.js";
-
+import { createCustomElement } from "../functions/functions";
 export default function sidebar() {
-    //sidebar navigation
-    const sidebar = document.createElement("div");
-    sidebar.className = "sidebar";
-    content.appendChild(sidebar);
+    //Sidebar container
+    const sidebar = createCustomElement("div", "sidebar", content);
 
-    //sidebar content
-    //logo
-    const logo = document.createElement("div");
-    logo.className = "logo";
-    sidebar.appendChild(logo);
-    
-    const logoIcon = document.createElement("i");
-    logoIcon.className = "fa-solid fa-clipboard-list";
-    logo.appendChild(logoIcon);
+    //Logo container
+    const logo = createCustomElement("div", "logo", sidebar);
 
-    const logoText = document.createElement("a");
+    //Logo icon
+    createCustomElement("i", "fa-solid fa-clipboard-list", logo);
+
+    //Logo text
+    const logoText = createCustomElement("a", "logo-text", logo, "To Do List");
     logoText.setAttribute("href", "#");
-    logoText.innerHTML = `To Do List`;
-    logo.appendChild(logoText);
 
-    //navigation
-    const nav = document.createElement("div");
-    nav.className = "nav";
-    sidebar.appendChild(nav);
+    //navbar container
+    const nav = createCustomElement("div", "nav", sidebar);
 
-    //navigation buttons
-    //MyDay card
-    const myDayCard = document.createElement("div");
-    myDayCard.className = "nav-card my-day-card";
-    nav.appendChild(myDayCard);
+    //my Day Card
+    const myDayCard = createCustomElement("div", "nav-card my-day-card", nav);
 
-    //MyDay icon
-    const myDayIcon = document.createElement("i");
-    myDayIcon.className = "fa-solid fa-calendar-day my-day-icon";
-    myDayCard.appendChild(myDayIcon);
+    //My Day Icon
+    createCustomElement("i", "fa-solid fa-calendar-day my-day-icon", myDayCard);
 
-    //myDay number
-    const myDaynumber = document.createElement("span");
-    myDayCard.appendChild(myDaynumber);
+    //My Day counter
+    createCustomElement("span", undefined, myDayCard);
 
-    //TODO: remove hardcoded values
-    //MyDay
-    const myDay = document.createElement("div");
-    myDay.className = "my-day";
-    myDay.textContent = "My Day";
-    myDayCard.appendChild(myDay);
+    //My Day Text
+    createCustomElement("div", "my-day", myDayCard, "My Day");
 
-    //alTasks card
-    const allTasksCard = document.createElement("div");
-    allTasksCard.className = "nav-card all-tasks-card";
-    nav.appendChild(allTasksCard);
+    //All Tasks Card
+    const allTasksCard = createCustomElement("div", "nav-card all-tasks-card", nav);
 
-    //alTasksIcon icon
-    const allTasksIcon = document.createElement("i");
-    allTasksIcon.className = "fa-solid fa-calendar-days all-tasks-icon";
-    allTasksCard.appendChild(allTasksIcon);
+    //All Tasks Icon
+    createCustomElement("i", "fa-solid fa-calendar-days all-tasks-icon", allTasksCard);
 
-    //TODO: remove hardcoded values
-    //alTasksnumber
-    const alTasksnumber = document.createElement("span");
-    allTasksCard.appendChild(alTasksnumber);
+    //All Tasks counter
+    createCustomElement("span", undefined, allTasksCard);
 
-    //alTasks
-    const allTasks = document.createElement("div");
-    allTasks.className = "tasks";
-    allTasks.textContent = "Tasks";
-    allTasksCard.appendChild(allTasks);
+    //All Tasks Text
+    createCustomElement("div", "tasks", allTasksCard, "Tasks");
 
-    //Menu with lists
-    const lists = document.createElement("div");
-    lists.className = "lists";
-    sidebar.appendChild(lists);
-    //dotline
-    const line = document.createElement("hr");
-    lists.appendChild(line);
+    //Lists container
+    const lists = createCustomElement("div", "lists", sidebar);
 
-    //New List btn
-    const newList = document.createElement("div");
-    newList.className = "new-list";
-    sidebar.appendChild(newList);
+    //hr
+    createCustomElement("hr", undefined, lists);
 
-    // New List Icon
-    const newListIcon = document.createElement("i");
-    newListIcon.className = "fa-solid fa-plus";
-    newList.appendChild(newListIcon);
+    //New List Button
+    const newList = createCustomElement("div", "new-list", sidebar);
 
-    const newListBtn = document.createElement("div");
-    newListBtn.className = "new-list-button";
-    newListBtn.textContent = "Add List";
-    newList.appendChild(newListBtn);
+    //New List Button Icon
+    createCustomElement("i", "fa-solid fa-plus", newList);
+
+    //New List Button Text
+    createCustomElement("div", "new-list-button", newList, "Add List");
 }

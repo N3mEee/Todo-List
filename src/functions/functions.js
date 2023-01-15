@@ -136,3 +136,11 @@ export function updateSidebarNav() {
     myDayCard.textContent = `${myDayCounter}`;
     allTasks.textContent = `${allTaskscounter}`;
 }
+
+export function createCustomElement(elementType = "div", className = "", appender, textContent = "") {
+    const element = document.createElement(elementType);
+    element.className = className;
+    element.textContent = textContent;
+    appender.appendChild(element);
+    return element;
+}

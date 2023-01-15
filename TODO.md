@@ -6,7 +6,6 @@
 
 # Bugs:
 
--   clicking on the sidebar>list>icon sometimes doesn't work
 -   fix js form validation
 
 # TODO:
