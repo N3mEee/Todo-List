@@ -104,12 +104,12 @@
     color: var(--neutral-700);
 }
 .main .container .task .task-details .task-date {
-    background-color: var(--blue-400);
+    background-color: #d8e7fd;
     border-radius: 20px;
     padding: 0 4px;
     margin: 8px 0;
     max-width: max-content;
-    color: white;
+    color: #2244b1;
     font-size: 0.8rem;
 }
 .main .container .task .task-details .task-priority {
@@ -127,6 +127,6 @@
     align-items: center;
 }
 
-.main .container .task .task-icons > *{
-padding: 10px;
+.main .container .task .task-icons > * {
+    padding: 10px;
 }

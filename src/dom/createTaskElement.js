@@ -14,10 +14,6 @@ export default function createTaskElement(item) {
     item.checked ? (checkBox.checked = true) : (checkBox.checked = false);
     taskDetails.appendChild(checkBox);
 
-    // const detailsContainer = document.createElement("div");
-    // detailsContainer.className = "details-container";
-    // taskDetails.appendChild(detailsContainer);
-
     const title = document.createElement("div");
     title.classList.add("task-title");
     title.textContent = item.titleValue;
@@ -31,6 +27,24 @@ export default function createTaskElement(item) {
     const priority = document.createElement("div");
     priority.classList.add("task-priority");
     priority.textContent = item.priority;
+    switch (item.priority) {
+        case "Red":
+            priority.style.backgroundColor = "#fee2e2";
+            priority.style.color = "#a63434";
+            break;
+        case "Yellow":
+            priority.style.backgroundColor = "#fef9c3";
+            priority.style.color = "#864f10";
+            break;
+        case "Green":
+            priority.style.backgroundColor = "#dcfce7";
+            priority.style.color = "#1d6a3a";
+            break;
+        default:
+            priority.style.backgroundColor = "#f3f4f6";
+            priority.style.color = "#202a38";
+            break;
+    }
     taskDetails.appendChild(priority);
 
     const taskIcons = document.createElement("div");
