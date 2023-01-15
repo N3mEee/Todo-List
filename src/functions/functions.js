@@ -41,6 +41,7 @@ export function updateTasksContainer(listName) {
     events().deleteTask();
     events().deleteList();
     events().viewTask();
+    updateSidebarNav();
 }
 
 export function updateSidebarLists() {
@@ -56,10 +57,14 @@ export function updateSidebarLists() {
         listContainer.appendChild(listIcon);
 
         const list = document.createElement("div");
-        // list.classList.add("list");
         list.textContent = item.listName;
         listContainer.appendChild(list);
+
+        const counter = document.createElement("span");
+        counter.textContent = `${item.tasks.length}`;
+        listContainer.appendChild(counter);
     });
+    updateSidebarNav();
 }
 
 export function updateLocalStorage() {
@@ -95,4 +100,24 @@ export function removeTaskContainer() {
 export function removePopout(node) {
     const main = document.querySelector(".main");
     main.removeChild(node);
+}
+
+export function updateSidebarNav() {
+    const myDayCard = document.querySelector(".my-day-card").querySelector("span");
+    const allTasks = document.querySelector(".all-tasks-card").querySelector("span");
+
+    let myDayCounter = 0;
+    let allTaskscounter = 0;
+
+    arrayLists.forEach((list) => {
+        allTaskscounter += list.tasks.length;
+        list.tasks.forEach((task) => {
+            if (isToday(new Date(task.date.split("-").reverse().join(",")))) {
+                myDayCounter += 1;
+            }
+        });
+    });
+
+    myDayCard.textContent = `${myDayCounter}`;
+    allTasks.textContent = `${allTaskscounter}`;
 }

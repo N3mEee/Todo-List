@@ -93,6 +93,8 @@ export default function events() {
                 functions.removePopout(formContainer);
                 functions.updateLocalStorage();
                 functions.updateTasksContainer(listName.value);
+                functions.updateSidebarLists();
+                sidebarLists();
             }
         });
     }
@@ -134,10 +136,15 @@ export default function events() {
             deleteTaskBtn.addEventListener("click", (e) => {
                 arrayLists.forEach((list) => {
                     list.tasks.forEach((task) => {
-                        if (e.target.parentNode.parentNode.parentNode.parentNode.querySelector(".task-title").textContent === task.titleValue) {
+                        if (
+                            e.target.parentNode.parentNode.parentNode.parentNode.querySelector(".task-title")
+                                .textContent === task.titleValue
+                        ) {
                             list.tasks.splice(list.tasks.indexOf(task), 1);
                             functions.updateLocalStorage();
                             functions.updateTasksContainer(listName);
+                            functions.updateSidebarLists();
+                            sidebarLists();
                         }
                     });
                 });
@@ -169,7 +176,8 @@ export default function events() {
 
         viewTaskBtns.forEach((viewTaskBtn) => {
             viewTaskBtn.addEventListener("click", (e) => {
-                const taskName = e.target.parentNode.parentNode.parentNode.parentNode.querySelector(".task-title").textContent;
+                const taskName =
+                    e.target.parentNode.parentNode.parentNode.parentNode.querySelector(".task-title").textContent;
 
                 functions.removeTaskContainer();
 
@@ -236,10 +244,8 @@ export default function events() {
         const allTasksCard = document.querySelector(".all-tasks-card");
 
         lists.forEach((list) => {
-            list.addEventListener("click", function (e) {
-                !e.target.classList.contains("list")
-                    ? functions.updateTasksContainer(e.target.parentNode.children[1].textContent)
-                    : functions.updateTasksContainer(e.target.textContent);
+            list.addEventListener("click", () => {
+                functions.updateTasksContainer(list.querySelector("div").textContent);
             });
         });
 

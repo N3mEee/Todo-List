@@ -119,6 +119,16 @@
     background-color: white;
     color: var(--blue-400);
 }
+.sidebar .list:hover span {
+    color: white;
+}
+
+.sidebar .list span {
+    color: var(--neutral-400);
+    font-weight: 600;
+    margin-left: auto;
+}
+
 .sidebar .new-list {
     background-color: var(--neutral-200);
     padding: 5px;
