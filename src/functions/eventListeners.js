@@ -105,9 +105,9 @@ export default function events() {
                 });
                 functions.removePopup(formContainer);
                 functions.updateLocalStorage();
-                functions.updateTasksContainer(listName.value);
                 functions.updateSidebarLists();
                 sidebarLists();
+                functions.updateTasksContainer(listName.value);
             }
         });
     }
@@ -155,9 +155,9 @@ export default function events() {
                         ) {
                             list.tasks.splice(list.tasks.indexOf(task), 1);
                             functions.updateLocalStorage();
-                            functions.updateTasksContainer(listName);
                             functions.updateSidebarLists();
                             sidebarLists();
+                            functions.updateTasksContainer(listName);
                             return false;
                         } else {
                             return true;
@@ -178,9 +178,9 @@ export default function events() {
                 if (list.listName === listName) {
                     arrayLists.splice(arrayLists.indexOf(list), 1);
                     functions.updateLocalStorage();
-                    functions.updateTasksContainer("My Day");
                     functions.updateSidebarLists();
                     sidebarLists();
+                    functions.updateTasksContainer("My Day");
                 }
             });
         });
@@ -262,9 +262,9 @@ export default function events() {
             task.priority = priority;
 
             functions.updateLocalStorage();
-            functions.updateTasksContainer(arrayLists[indexOfList].name);
             functions.removePopup(editTaskContainer);
             sidebarLists();
+            functions.updateTasksContainer(arrayLists[indexOfList].name);
         });
     }
 

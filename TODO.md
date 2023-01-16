@@ -1,7 +1,5 @@
 # User Stories
 
--   as a user I should be able to see inside the sidebar what list is currently selected
-    -   the bg color of the list should be updated accordingly
 -   as a user I should be able to pick an icon for the list and see it in the sidebar.
 
 # Bugs:

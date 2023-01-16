@@ -43,6 +43,18 @@ export function updateTasksContainer(listName) {
     events().viewTask();
     events().editTask();
     updateSidebarNav();
+    setActiveList(listName);
+}
+
+export function setActiveList(listName) {
+    const lists = document.querySelectorAll(".list");
+    lists.forEach((list) => {
+        if (list.children[1].textContent === listName) {
+            list.classList.add("active");
+        } else {
+            list.classList.remove("active");
+        }
+    });
 }
 
 export function updateSidebarLists() {
