@@ -6,11 +6,10 @@
 
 # Bugs:
 
--   fix js form validation
-
 # TODO:
 
--   Only show active task in the sidebar counters
+-   Only show active tasks in the sidebar counters
+-   Find a better way to delete tasks
 -   Style
 
 # Notes:

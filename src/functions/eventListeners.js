@@ -34,7 +34,7 @@ export default function events() {
                 e.preventDefault();
                 const listName = document.querySelector("input[id=list-name]").value;
                 const hasName = arrayLists.some((lists) => {
-                    lists.listName === listName ? true : false;
+                    return lists.listName === listName ? true : false;
                 });
 
                 if (!hasName) {
@@ -42,6 +42,8 @@ export default function events() {
                     functions.updateSidebarLists();
                     functions.updateLocalStorage();
                     functions.removePopup(formContainer);
+                } else {
+                    alert(`"${listName}" already exists! Please choose a new list name.`);
                 }
                 sidebarLists();
             }
@@ -89,7 +91,16 @@ export default function events() {
                 e.preventDefault();
                 arrayLists.forEach((element) => {
                     if (element.listName === listName.value) {
-                        element.addNewTask = [taskName.value, false, date.value, description.value, priority.value];
+                        const hasTask = element.tasks.some((task) => {
+                            return task.titleValue === taskName.value;
+                        });
+                        if (!hasTask) {
+                            element.addNewTask = [taskName.value, false, date.value, description.value, priority.value];
+                        } else {
+                            alert(
+                                `Task name "${taskName.value}" already exists in this list! Please choose a different task name.`
+                            );
+                        }
                     }
                 });
                 functions.removePopup(formContainer);
@@ -136,8 +147,8 @@ export default function events() {
 
         deleteTaskBtns.forEach((deleteTaskBtn) => {
             deleteTaskBtn.addEventListener("click", (e) => {
-                arrayLists.forEach((list) => {
-                    list.tasks.forEach((task) => {
+                arrayLists.every((list) => {
+                    return list.tasks.every((task) => {
                         if (
                             deleteTaskBtn.parentNode.parentNode.querySelector(".task-title").textContent ===
                             task.titleValue
@@ -147,6 +158,9 @@ export default function events() {
                             functions.updateTasksContainer(listName);
                             functions.updateSidebarLists();
                             sidebarLists();
+                            return false;
+                        } else {
+                            return true;
                         }
                     });
                 });
