@@ -93,8 +93,9 @@
     margin: 10px 0;
 }
 
-/* vewtaskpopout */
-.main .view-task-container {
+/* vewtaskpopup */
+.main .view-task-container,
+.edit-task-container {
     position: absolute;
     left: 0;
     right: 0;
@@ -108,7 +109,8 @@
     backdrop-filter: blur(10px);
 }
 
-.main .view-task-container .view-task-card {
+.main .view-task-container .view-task-card,
+.edit-task-container .edit-task-card {
     display: flex;
     flex-direction: column;
     width: 50%;
@@ -117,27 +119,31 @@
     border: 1px solid var(--neutral-700);
 }
 
-.main .view-task-container .view-task-header {
+.main .view-task-container .view-task-header,
+.edit-task-container .edit-task-header {
     padding: 20px;
     display: flex;
     justify-content: space-between;
     box-shadow: 0 2px 1px -1px var(--title);
 }
 
-.main .view-task-container .view-task-header .view-task-header-title {
+.main .view-task-container .view-task-header .view-task-header-title,
+.edit-task-container .edit-task-header .edit-task-header-title {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 5px;
 }
 
-.main .view-task-container .view-task-header .view-task-header-title .list-name {
+.main .view-task-container .view-task-header .view-task-header-title .list-name,
+.edit-task-container .edit-task-header .edit-task-header-title .list-name {
     background-color: rgba(255, 0, 0, 0.231);
     padding: 5px;
     border-radius: 20px;
 }
 
-.main .view-task-container .view-task-header .view-task-exit {
+.main .view-task-container .view-task-header .view-task-exit,
+.edit-task-container .edit-task-header .edit-task-exit {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -150,12 +156,14 @@
     color: white;
 }
 
-.main .view-task-container .view-task-header .view-task-exit:hover {
+.main .view-task-container .view-task-header .view-task-exit,
+.edit-task-container .edit-task-header .edit-task-exit:hover {
     background-color: white;
     color: var(--title);
 }
 
-.main .view-task-container .task-view-content {
+.main .view-task-container .task-view-content,
+.edit-task-container .task-edit-content {
     display: flex;
     justify-content: space-between;
 }
@@ -171,4 +179,23 @@
 
 .btn-primary:hover {
     background-color: rgb(144, 204, 224);
+}
+
+body {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+body::-webkit-scrollbar {
+    width: 10px;
+}
+
+body::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+}
+
+body::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.9);
 }

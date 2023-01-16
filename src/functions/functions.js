@@ -41,6 +41,7 @@ export function updateTasksContainer(listName) {
     events().deleteTask();
     events().deleteList();
     events().viewTask();
+    events().editTask();
     updateSidebarNav();
 }
 
@@ -106,15 +107,9 @@ export function getLocalStorage() {
     }
 }
 
-export function removeTaskContainer() {
+export function removePopup(node) {
     const main = document.querySelector(".main");
-    const taskContainer = document.querySelector(".view-task-container");
-    if (taskContainer !== null) main.removeChild(taskContainer);
-}
-
-export function removePopout(node) {
-    const main = document.querySelector(".main");
-    main.removeChild(node);
+    if (node !== null) main.removeChild(node);
 }
 
 export function updateSidebarNav() {

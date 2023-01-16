@@ -4,6 +4,8 @@ import * as functions from "./functions";
 import taskInputForm from "../dom/taskInputForm";
 import listInputForm from "../dom/listInputForm";
 import taskView from "../dom/taskView";
+import taskEdit from "../dom/taskEdit";
+
 import { arrayLists } from "/src/index.js";
 
 export default function events() {
@@ -39,7 +41,7 @@ export default function events() {
                     arrayLists.push(new NewList(listName));
                     functions.updateSidebarLists();
                     functions.updateLocalStorage();
-                    functions.removePopout(formContainer);
+                    functions.removePopup(formContainer);
                 }
                 sidebarLists();
             }
@@ -53,7 +55,7 @@ export default function events() {
 
         btn.addEventListener("click", (e) => {
             e.preventDefault();
-            functions.removePopout(listFormContainer);
+            functions.removePopup(listFormContainer);
         });
     }
 
@@ -90,7 +92,7 @@ export default function events() {
                         element.addNewTask = [taskName.value, false, date.value, description.value, priority.value];
                     }
                 });
-                functions.removePopout(formContainer);
+                functions.removePopup(formContainer);
                 functions.updateLocalStorage();
                 functions.updateTasksContainer(listName.value);
                 functions.updateSidebarLists();
@@ -106,7 +108,7 @@ export default function events() {
 
         btn.addEventListener("click", (e) => {
             e.preventDefault();
-            functions.removePopout(formContainer);
+            functions.removePopup(formContainer);
         });
     }
 
@@ -137,8 +139,8 @@ export default function events() {
                 arrayLists.forEach((list) => {
                     list.tasks.forEach((task) => {
                         if (
-                            e.target.parentNode.parentNode.parentNode.parentNode.querySelector(".task-title")
-                                .textContent === task.titleValue
+                            deleteTaskBtn.parentNode.parentNode.querySelector(".task-title").textContent ===
+                            task.titleValue
                         ) {
                             list.tasks.splice(list.tasks.indexOf(task), 1);
                             functions.updateLocalStorage();
@@ -173,13 +175,13 @@ export default function events() {
     //viewTask
     function viewTask() {
         const viewTaskBtns = document.querySelectorAll(".view-task-btn");
+        const viewTaskContainer = document.querySelector(".view-task-container");
 
         viewTaskBtns.forEach((viewTaskBtn) => {
             viewTaskBtn.addEventListener("click", (e) => {
-                const taskName =
-                    e.target.parentNode.parentNode.parentNode.parentNode.querySelector(".task-title").textContent;
+                const taskName = viewTaskBtn.parentNode.parentNode.querySelector(".task-title").textContent;
 
-                functions.removeTaskContainer();
+                functions.removePopup(viewTaskContainer);
 
                 arrayLists.forEach((list) => {
                     const filteredTasks = list.tasks.filter((task) => task.titleValue === taskName);
@@ -193,6 +195,34 @@ export default function events() {
                             filteredTasks[0].priority
                         );
                         cancelViewTask();
+                    }
+                });
+            });
+        });
+    }
+
+    //editTask
+    function editTask() {
+        const editTaskBtns = document.querySelectorAll(".edit-task-btn");
+        const editTaskContainer = document.querySelector(".edit-task-container");
+
+        editTaskBtns.forEach((editTaskBtn) => {
+            editTaskBtn.addEventListener("click", (e) => {
+                const taskName = editTaskBtn.parentNode.parentNode.querySelector(".task-title").textContent;
+
+                functions.removePopup(editTaskContainer);
+                arrayLists.forEach((list) => {
+                    const filteredTasks = list.tasks.filter((task) => task.titleValue === taskName);
+                    if (filteredTasks.length > 0) {
+                        taskEdit(
+                            filteredTasks[0].title,
+                            filteredTasks[0].checked,
+                            filteredTasks[0].description,
+                            filteredTasks[0].date,
+                            list.listName,
+                            filteredTasks[0].priority
+                        );
+                        cancelEditTask();
                         saveEdits(arrayLists.indexOf(list), list.tasks.indexOf(filteredTasks[0]));
                     }
                 });
@@ -203,12 +233,13 @@ export default function events() {
     //Save edits
     function saveEdits(indexOfList, indexOfTask) {
         const saveEditsButton = document.querySelector(".save-edits");
+        const editTaskContainer = document.querySelector(".edit-task-container");
 
         saveEditsButton.addEventListener("click", (e) => {
-            const taskName = document.querySelector("#viewName").value;
-            const description = document.querySelector("#viewDescription").value;
-            const date = document.querySelector("#viewDdate").value;
-            const priority = document.querySelector("#viewPriority").value;
+            const taskName = document.querySelector("#edit-name").value;
+            const description = document.querySelector("#edit-description").value;
+            const date = document.querySelector("#edit-date").value;
+            const priority = document.querySelector("#edit-priority").value;
             const task = arrayLists[indexOfList].tasks[indexOfTask];
 
             task.title = taskName;
@@ -218,23 +249,48 @@ export default function events() {
 
             functions.updateLocalStorage();
             functions.updateTasksContainer(arrayLists[indexOfList].name);
-            functions.removeTaskContainer();
+            functions.removePopup(editTaskContainer);
             sidebarLists();
         });
     }
 
     //cancel view Task
     function cancelViewTask() {
+        const viewTaskContainer = document.querySelector(".view-task-container");
         const cancelViewTask = document.querySelector(".view-task-exit");
         cancelViewTask.addEventListener("click", (e) => {
-            functions.removeTaskContainer();
+            functions.removePopup(viewTaskContainer);
         });
 
-        document.addEventListener("keydown", (event) => {
-            if (event.key === "Escape") {
-                functions.removeTaskContainer();
-            }
+        document.addEventListener(
+            "keydown",
+            (event) => {
+                if (event.key === "Escape") {
+                    functions.removePopup(viewTaskContainer);
+                }
+            },
+            { once: true }
+        );
+    }
+
+    //cancel view Task
+    function cancelEditTask() {
+        const editTaskContainer = document.querySelector(".edit-task-container");
+        const cancelEditTask = document.querySelector(".edit-task-exit");
+
+        cancelEditTask.addEventListener("click", (e) => {
+            functions.removePopup(editTaskContainer);
         });
+
+        document.addEventListener(
+            "keydown",
+            (event) => {
+                if (event.key === "Escape") {
+                    functions.removePopup(editTaskContainer);
+                }
+            },
+            { once: true }
+        );
     }
 
     //Sidebar lists buttons
@@ -257,5 +313,5 @@ export default function events() {
         });
     }
 
-    return { sidebarLists, newList, newTask, checkBox, deleteTask, deleteList, viewTask, saveEdits };
+    return { sidebarLists, newList, newTask, checkBox, deleteTask, deleteList, viewTask, saveEdits, editTask };
 }
