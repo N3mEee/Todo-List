@@ -62,7 +62,7 @@ export default function createTaskElement(item) {
 
     //edit
     const editTask = document.createElement("div");
-    editTask.classList.add("view-task-btn");
+    editTask.classList.add("edit-task-btn");
     taskIcons.appendChild(editTask);
 
     const editTaskIcon = document.createElement("i");

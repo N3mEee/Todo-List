@@ -47,42 +47,21 @@ export default function taskView(viewName, viewChecked, viewDescription, viewDat
     <div class="left" style="display: flex; gap: 5px; flex-direction: column;">
         <div class="title-container" style="padding: 10px; display: flex; gap: 5px;">
             <div class="task-name-label">Task Name:</div>
-            <input type="text" id="viewName" value="${viewName}"></input>
+            <p>${viewName}</p>
         </div>
         <div class="description" style="padding: 10px; display: flex; gap: 5px;">
             <div class="description-label">Description:</div>
-            <textarea id="viewDescription">${viewDescription}</textarea>
+            <p>${viewDescription}</p>
         </div>
-        <button class="save-edits">Save Edits</button>
     </div>
     <div class="right" style="display: flex; gap: 5px; flex-direction: column;">
         <div class="date" style="padding: 10px; display: flex; gap: 5px;">
             <div class="date-label">Due date:</div>
-            <input type="date" id="viewDdate" value="${viewDate.split("-").reverse().join("-")}"></input>
+            <p>${viewDate.split("-").reverse().join("-")}</p>
         </div>
         <div class="priority" style="padding: 10px; display: flex; gap: 5px;">
             <div class="priority-label">Priority:</div>
-            <select id="viewPriority" required>
-            <option value="Red">Red</option>
-            <option value="Yellow">Yellow</option>
-            <option value="Green">Green</option>
-            </select>
+            <p>${viewPriority}</p>
         </div>
     </div>`;
-    const red = document.querySelector('option[value="Red"]');
-    const yellow = document.querySelector('option[value="Yellow"]');
-    const green = document.querySelector('option[value="Green"]');
-    switch (viewPriority) {
-        case "Red":
-            red.setAttribute("selected", "");
-            break;
-        case "Yellow":
-            yellow.setAttribute("selected", "");
-            break;
-        case "Green":
-            green.setAttribute("selected", "");
-            break;
-        default:
-            break;
-    }
 }

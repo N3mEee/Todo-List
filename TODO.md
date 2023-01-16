@@ -12,7 +12,6 @@
 
 -   Only show active task in the sidebar counters
 -   Style
--   Add a task view where the user can only see informations and change the current task vew name to task edit
 
 # Notes:
 
