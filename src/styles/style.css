@@ -48,7 +48,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(5px);
 }
 
 /* newlistform */
@@ -59,11 +59,16 @@
     height: max-content;
     display: flex;
     flex-direction: column;
-    border: 1px solid var(--neutral-700);
+    box-shadow: 0 0 4px 4px var(--neutral-500);
+    border-radius: 20px;
 }
 /* newlistform */
 .main .new-list-form input {
     margin: 10px 0;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0 0 1px 1px var(--neutral-900);
+    padding: 5px 5px;
 }
 
 .new-task-form-container {
@@ -75,7 +80,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(5px);
 }
 
 /* newtaskform */
@@ -86,13 +91,32 @@
     height: max-content;
     display: flex;
     flex-direction: column;
-    border: 1px solid var(--neutral-700);
+    box-shadow: 0 0 4px 4px var(--neutral-500);
+    border-radius: 20px;
 }
 
 .main .new-task-form input {
     margin: 10px 0;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0 0 1px 1px var(--neutral-900);
+    padding: 2px 5px;
 }
 
+.main .new-task-form textarea {
+    margin: 10px 0;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0 0 1px 1px var(--neutral-900);
+    padding: 2px 5px;
+}
+.main .new-task-form select {
+    margin: 10px 0;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0 0 1px 1px var(--neutral-900);
+    padding: 2px 5px;
+}
 /* vewtaskpopup */
 .main .view-task-container,
 .edit-task-container {
@@ -106,7 +130,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(5px);
 }
 
 .main .view-task-container .view-task-card,
@@ -173,12 +197,16 @@
     border-radius: 10px;
     cursor: pointer;
     margin: 10px;
-    padding: 10px;
-    background-color: lightblue;
+    padding: 5px;
+    border: none;
+    background-color: var(--neutral-300);
+    box-shadow: 0 2px 1px 2px var(--neutral-500);
 }
 
 .btn-primary:hover {
-    background-color: rgb(144, 204, 224);
+    box-shadow: 0 2px 1px 2px var(--neutral-900);
+    background-color: var(--title);
+    color: white;
 }
 
 body {
