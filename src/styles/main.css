@@ -7,13 +7,35 @@
     grid-template-rows: auto auto 1fr;
 }
 
+.main .wrapper {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    margin: 20px;
+}
+
+.main .hamburger:hover {
+    color: var(--title);
+}
+
+.main .hamburger {
+    display: none;
+    width: 30px;
+    height: 30px;
+}
+
+.main .hamburger svg {
+    width: 100%;
+    height: 100%;
+}
+
 .main .new-task {
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 50px;
     padding: 10px;
-    margin: 20px 20px 0 0;
     cursor: pointer;
     width: 30px;
     height: 30px;
@@ -129,4 +151,21 @@
 
 .main .container .task .task-icons > * {
     padding: 10px;
+}
+
+input[type="checkbox"] {
+    width: 1.3em;
+    height: 1.3em;
+    background-color: white;
+    border-radius: 50%;
+    vertical-align: middle;
+    border: 1px solid var(--neutral-700);
+    appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+    cursor: pointer;
+}
+
+input[type="checkbox"]:checked {
+    background-color: gray;
 }

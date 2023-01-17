@@ -21,7 +21,8 @@ export default function createTaskElement(item) {
 
     const date = document.createElement("div");
     date.classList.add("task-date");
-    date.textContent = item.dateValue;
+    const x = item.dateValue.split("-");
+    date.textContent = `${x[0]}/${x[1]}/${x[2]}`;
     taskDetails.appendChild(date);
 
     const priority = document.createElement("div");

@@ -20,6 +20,22 @@ export default function events() {
         });
     }
 
+    // hamburger button
+    function hamburger() {
+        const hamburgerBtns = document.querySelectorAll(".hamburger");
+        const sidebar = document.querySelector(".sidebar");
+
+        hamburgerBtns.forEach((hamburgerBtn) => {
+            hamburgerBtn.addEventListener("click", (e) => {
+                if (sidebar.style.display === "grid") {
+                    sidebar.style.display = "none";
+                } else {
+                    sidebar.style.display = "grid";
+                }
+            });
+        });
+    }
+
     // Create a new list
     function createNewList() {
         const form = document.querySelector(".new-list-form");
@@ -327,5 +343,16 @@ export default function events() {
         });
     }
 
-    return { sidebarLists, newList, newTask, checkBox, deleteTask, deleteList, viewTask, saveEdits, editTask };
+    return {
+        sidebarLists,
+        newList,
+        newTask,
+        checkBox,
+        deleteTask,
+        deleteList,
+        viewTask,
+        saveEdits,
+        editTask,
+        hamburger,
+    };
 }

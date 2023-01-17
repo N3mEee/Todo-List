@@ -7,10 +7,25 @@ export default function content() {
     main.classList.add("main");
     content.appendChild(main);
 
+    // wrapper
+    const wrapper = document.createElement("div");
+    wrapper.classList.add("wrapper");
+    main.appendChild(wrapper);
+
+    //hamburger
+    const hamburger = document.createElement("div");
+    hamburger.className = "hamburger";
+    wrapper.appendChild(hamburger);
+
+    //hamburger
+    const hamburgerIcon = document.createElement("i");
+    hamburgerIcon.className = "fa-solid fa-bars";
+    hamburger.appendChild(hamburgerIcon);
+
     //Tasks creator
     const newTaskBtn = document.createElement("div");
     newTaskBtn.setAttribute("class", "new-task");
-    main.appendChild(newTaskBtn);
+    wrapper.appendChild(newTaskBtn);
 
     // New List Icon
     const newTaskIcon = document.createElement("i");

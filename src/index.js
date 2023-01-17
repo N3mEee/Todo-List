@@ -15,3 +15,4 @@ events().newList();
 Content();
 functions.updateTasksContainer("My Day");
 events().newTask();
+events().hamburger();

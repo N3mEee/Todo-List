@@ -8,7 +8,7 @@
 
 -   Only show active tasks in the sidebar counters
 -   Find a better way to delete tasks
--   Style
+-   Style task view/edit popups
 
 # Notes:
 

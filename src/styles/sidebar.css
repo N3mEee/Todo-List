@@ -6,12 +6,28 @@
     grid-template-rows: auto auto 1fr auto;
 }
 
+.sidebar .hamburger:hover {
+    color: var(--title);
+}
+
+.sidebar .hamburger {
+    color: var(--neutral-900);
+    display: none;
+    width: 30px;
+    height: 30px;
+}
+
+.sidebar .hamburger svg {
+    width: 100%;
+    height: 100%;
+}
+
 .sidebar .logo {
     color: var(--blue-500);
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 50px 50px;
+    margin: 50px 0;
 }
 
 .sidebar .logo svg {

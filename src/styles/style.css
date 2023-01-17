@@ -227,3 +227,32 @@ body::-webkit-scrollbar-thumb {
     border-radius: 10px;
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.9);
 }
+
+@media (max-width: 768px) {
+    #content {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        position: absolute;
+        display: none;
+        width: max-content;
+    }
+
+    .main .hamburger {
+        display: block;
+    }
+
+    .sidebar .hamburger {
+        display: block;
+    }
+
+    .sidebar .logo > svg,
+    .logo-text {
+        display: none;
+    }
+
+    .main .wrapper {
+        grid-template-columns: 1fr 1fr;
+    }
+}

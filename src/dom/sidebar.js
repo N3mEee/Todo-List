@@ -8,6 +8,16 @@ export default function sidebar() {
     //Logo container
     const logo = createCustomElement("div", "logo", sidebar);
 
+    //hamburger
+    const hamburger = document.createElement("div");
+    hamburger.className = "hamburger";
+    logo.appendChild(hamburger);
+
+    //hamburger
+    const hamburgerIcon = document.createElement("i");
+    hamburgerIcon.className = "fa-solid fa-bars";
+    hamburger.appendChild(hamburgerIcon);
+
     //Logo icon
     createCustomElement("i", "fa-solid fa-clipboard-list", logo);
 
