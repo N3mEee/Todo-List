@@ -153,6 +153,15 @@
     padding: 10px;
 }
 
+.main .container .task .task-icons .view-task-btn:hover,
+.main .container .task .task-icons .edit-task-btn:hover {
+    color: var(--title);
+}
+
+.main .container .task .task-icons .delete-task-btn:hover {
+    color: red;
+}
+
 input[type="checkbox"] {
     width: 1.3em;
     height: 1.3em;

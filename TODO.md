@@ -6,9 +6,11 @@
 
 # TODO:
 
+-   Add hamburger menu for task icons on mobile devices
 -   Only show active tasks in the sidebar counters
 -   Find a better way to delete tasks
 -   Style task view/edit popups
+    -   Rethink the font family for tasks and titles
 
 # Notes:
 

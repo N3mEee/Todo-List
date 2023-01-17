@@ -60,9 +60,16 @@
     font-size: 1.2rem;
     cursor: pointer;
 }
+
 .sidebar .nav-card:hover {
     background-color: var(--blue-400);
     color: white;
+}
+
+.sidebar .nav-card:hover .my-day-icon,
+.sidebar .nav-card:hover .all-tasks-icon {
+    background-color: white;
+    color: var(--title);
 }
 
 .sidebar .nav-card span {
@@ -82,7 +89,7 @@
 }
 
 .sidebar .nav-card .all-tasks-icon {
-    background-color: #ff3a2f;
+    background-color: var(--title);
 }
 
 .sidebar .lists {
