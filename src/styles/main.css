@@ -99,6 +99,22 @@
     margin: 5px;
 }
 
+.main .container .task:hover {
+    cursor: pointer;
+}
+
+.main .container .view-task-btn,
+.main .container .edit-task-btn,
+.main .container .delete-task-btn {
+    color: var(--neutral-500);
+}
+
+.main .container .task:hover .view-task-btn,
+.main .container .task:hover .edit-task-btn,
+.main .container .task:hover .delete-task-btn {
+    color: black;
+}
+
 .main .container .task .task-details {
     display: grid;
     grid-template-columns: auto auto 1fr;
@@ -163,6 +179,7 @@
 }
 
 input[type="checkbox"] {
+    position: relative;
     width: 1.3em;
     height: 1.3em;
     background-color: white;
@@ -175,6 +192,16 @@ input[type="checkbox"] {
     cursor: pointer;
 }
 
+input[type="checkbox"]::before {
+    content: "\2713";
+    display: block;
+    text-align: center;
+    color: white;
+    position: absolute;
+    left: 0.25rem;
+    top: -0.04rem;
+}
+
 input[type="checkbox"]:checked {
-    background-color: gray;
+    background-color: var(--neutral-800);
 }
