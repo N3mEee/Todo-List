@@ -204,6 +204,43 @@ export default function events() {
 
     //viewTask
     function viewTask() {
+        const tasks = document.querySelectorAll(".task");
+        const viewTaskContainer = document.querySelector(".view-task-container");
+        viewTaskBtn();
+
+        tasks.forEach((task) => {
+            task.addEventListener("click", (e) => {
+                if (
+                    e.target.classList.contains("task") ||
+                    e.target.classList.contains("task-title") ||
+                    e.target.classList.contains("task-priority") ||
+                    e.target.classList.contains("task-date")
+                ) {
+                    const taskName = task.querySelector(".task-title").textContent;
+
+                    functions.removePopup(viewTaskContainer);
+
+                    arrayLists.forEach((list) => {
+                        const filteredTasks = list.tasks.filter((task) => task.titleValue === taskName);
+                        if (filteredTasks.length > 0) {
+                            taskView(
+                                filteredTasks[0].title,
+                                filteredTasks[0].checked,
+                                filteredTasks[0].description,
+                                filteredTasks[0].date,
+                                list.listName,
+                                filteredTasks[0].priority
+                            );
+                            cancelViewTask();
+                        }
+                    });
+                }
+            });
+        });
+    }
+
+    //viewTaskBtn
+    function viewTaskBtn() {
         const viewTaskBtns = document.querySelectorAll(".view-task-btn");
         const viewTaskContainer = document.querySelector(".view-task-container");
 
