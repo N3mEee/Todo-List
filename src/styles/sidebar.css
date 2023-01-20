@@ -4,6 +4,7 @@
     background-color: var(--neutral-200);
     display: grid;
     grid-template-rows: auto auto 1fr auto;
+    z-index: 9999;
 }
 
 .sidebar .hamburger:hover {
