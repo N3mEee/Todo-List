@@ -135,12 +135,14 @@
 
 .main .view-task-container .view-task-card,
 .edit-task-container .edit-task-card {
-    display: flex;
-    flex-direction: column;
     width: 50%;
     height: 50%;
+    padding: 20px;
     background-color: white;
-    border: 1px solid var(--neutral-700);
+    box-shadow: 0 0 4px 4px var(--neutral-500);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
 }
 
 .main .view-task-container .view-task-header,
@@ -235,6 +237,7 @@ body::-webkit-scrollbar-thumb {
 
     .sidebar {
         position: absolute;
+        z-index: 9999;
         display: none;
         width: max-content;
     }
