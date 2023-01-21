@@ -45,21 +45,21 @@ export default function taskView(viewName, viewChecked, viewDescription, viewDat
     viewTaskCard.appendChild(taskViewContent);
     taskViewContent.innerHTML = `
     <div class="left" style="display: flex; gap: 5px; flex-direction: column;">
-        <div class="title-container" style="padding: 10px; display: flex; gap: 5px;">
+        <div class="title-container" style="padding: 10px; display: flex; flex-direction: column; gap: 5px;">
             <div class="task-name-label">Task Name:</div>
             <p>${viewName}</p>
         </div>
-        <div class="description" style="padding: 10px; display: flex; gap: 5px;">
+        <div class="description" style="padding: 10px; display: flex; flex-direction: column; gap: 5px;">
             <div class="description-label">Description:</div>
             <p>${viewDescription}</p>
         </div>
     </div>
     <div class="right" style="display: flex; gap: 5px; flex-direction: column;">
-        <div class="date" style="padding: 10px; display: flex; gap: 5px;">
+        <div class="date" style="padding: 10px; display: flex; flex-direction: column; gap: 5px;">
             <div class="date-label">Due date:</div>
             <p>${viewDate.split("-").reverse().join("-")}</p>
         </div>
-        <div class="priority" style="padding: 10px; display: flex; gap: 5px;">
+        <div class="priority" style="padding: 10px; display: flex; flex-direction: column; gap: 5px;">
             <div class="priority-label">Priority:</div>
             <p>${viewPriority}</p>
         </div>

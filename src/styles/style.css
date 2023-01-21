@@ -119,7 +119,7 @@
 }
 /* vewtaskpopup */
 .main .view-task-container,
-.edit-task-container {
+.main .edit-task-container {
     position: absolute;
     left: 0;
     right: 0;
@@ -134,7 +134,7 @@
 }
 
 .main .view-task-container .view-task-card,
-.edit-task-container .edit-task-card {
+.main .edit-task-container .edit-task-card {
     width: 50%;
     height: 50%;
     padding: 20px;
@@ -146,7 +146,7 @@
 }
 
 .main .view-task-container .view-task-header,
-.edit-task-container .edit-task-header {
+.main .edit-task-container .edit-task-header {
     padding: 20px;
     display: flex;
     justify-content: space-between;
@@ -154,7 +154,7 @@
 }
 
 .main .view-task-container .view-task-header .view-task-header-title,
-.edit-task-container .edit-task-header .edit-task-header-title {
+.main .edit-task-container .edit-task-header .edit-task-header-title {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -162,14 +162,14 @@
 }
 
 .main .view-task-container .view-task-header .view-task-header-title .list-name,
-.edit-task-container .edit-task-header .edit-task-header-title .list-name {
+.main .edit-task-container .edit-task-header .edit-task-header-title .list-name {
     background-color: rgba(255, 0, 0, 0.231);
     padding: 5px;
     border-radius: 20px;
 }
 
 .main .view-task-container .view-task-header .view-task-exit,
-.edit-task-container .edit-task-header .edit-task-exit {
+.main .edit-task-container .edit-task-header .edit-task-exit {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -180,18 +180,43 @@
     background-color: var(--title);
     border-radius: 50px;
     color: white;
+    border: 1px solid var(--title);
+}
+.main .view-task-container .view-task-header .view-task-exit,
+.main .edit-task-container .edit-task-header .edit-task-exit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-end;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    background-color: var(--title);
+    border-radius: 50px;
+    color: white;
+    border: 1px solid var(--title);
 }
 
-.main .view-task-container .view-task-header .view-task-exit,
-.edit-task-container .edit-task-header .edit-task-exit:hover {
+.main .view-task-container .view-task-header .view-task-exit:hover,
+.main .edit-task-container .edit-task-header .edit-task-exit:hover {
     background-color: white;
     color: var(--title);
 }
 
 .main .view-task-container .task-view-content,
-.edit-task-container .task-edit-content {
+.main .edit-task-container .task-edit-content {
     display: flex;
     justify-content: space-between;
+}
+
+.main .view-task-container .task-view-content input,
+.main .edit-task-container .task-edit-content input,
+.main .edit-task-container .task-edit-content textarea {
+    margin: 10px 0;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0 0 1px 1px var(--neutral-900);
+    padding: 5px 5px;
 }
 
 /* global use */

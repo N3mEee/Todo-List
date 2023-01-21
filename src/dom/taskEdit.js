@@ -45,22 +45,22 @@ export default function taskEdit(editName, editChecked, editDescription, editDat
     editTaskCard.appendChild(editTaskContent);
     editTaskContent.innerHTML = `
     <div class="left" style="display: flex; gap: 5px; flex-direction: column;">
-        <div class="title-container" style="padding: 10px; display: flex; gap: 5px;">
+        <div class="title-container" style="padding: 10px; display: flex; flex-direction: column; gap: 5px;">
             <div class="task-name-label">Task Name:</div>
             <input type="text" id="edit-name" value="${editName}"></input>
         </div>
-        <div class="description" style="padding: 10px; display: flex; gap: 5px;">
+        <div class="description" style="padding: 10px; display: flex; flex-direction: column; gap: 5px;">
             <div class="description-label">Description:</div>
             <textarea id="edit-description">${editDescription}</textarea>
         </div>
-        <button class="save-edits">Save Edits</button>
+        <button class="save-edits btn-primary">Save Edits</button>
     </div>
     <div class="right" style="display: flex; gap: 5px; flex-direction: column;">
-        <div class="date" style="padding: 10px; display: flex; gap: 5px;">
+        <div class="date" style="padding: 10px; display: flex; flex-direction: column; gap: 5px;">
             <div class="date-label">Due date:</div>
             <input type="date" id="edit-date" value="${editDate.split("-").reverse().join("-")}"></input>
         </div>
-        <div class="priority" style="padding: 10px; display: flex; gap: 5px;">
+        <div class="priority" style="padding: 10px; display: flex; flex-direction: column; gap: 5px;">
             <div class="priority-label">Priority:</div>
             <select id="edit-priority" required>
             <option value="Red">Red</option>
